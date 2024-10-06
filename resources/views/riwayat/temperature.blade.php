@@ -205,7 +205,7 @@
             </main>
             <footer class="bg-white border-t border-gray-200 p-4 shadow-md mt-auto">
                 <div class="flex items-center justify-center">
-                    <p class="text-sm text-gray-500">&copy; Gumukmas Multifarm</p>
+                    <p class="text-sm text-gray-500">&copy; Greenhouser Kopi Nursery</p>
                 </div>
             </footer>
             <form id="logout-form" action="#" method="POST" style="display: none;">
