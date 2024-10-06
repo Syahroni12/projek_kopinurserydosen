@@ -76,7 +76,7 @@
                                                     <p class="text-white text-md font-bold w-1/2">
                                                         @if ($Temperature1->isNotEmpty())
                                                         @foreach ($Temperature1 as $temperature)
-                                                        {{ $temperature->nilai_suhu }} C
+                                                        {{ $temperature->nilai_temperature }} C
                                                         @endforeach
                                                         @else
                                                     <p class="text-red-500">No Temperature data available.</p>
