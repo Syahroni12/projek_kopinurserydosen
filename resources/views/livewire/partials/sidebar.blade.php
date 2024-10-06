@@ -1,5 +1,5 @@
 <aside class="text-white w-52 flex-shrink-0 hidden lg:block "
-    style="background-image: url('{{ asset('images/bg-sidebar.png') }}');">
+    style="background-image: url('{{ asset('images/sidebar-bg.png') }}');">
     <div class="flex items-center justify-between pt-8 pb-4">
         <a class="flex items-center justify-center w-full" href="#">
             <div class="flex-1 flex justify-center items-center">
@@ -9,9 +9,9 @@
                 </div>
                 <div class="ml-2">
                     <span
-                        class="block font-semibold text-lwhite transition-all text-body duration-200 mr-4">GUMUKMAS</span>
+                        class="block font-semibold text-lwhite transition-all text-body duration-200 mr-4">KOPI</span>
                     <span
-                        class="block font-semibold text-lwhite transition-all text-body duration-200 mr-4">MULTIFARM</span>
+                        class="block font-semibold text-lwhite transition-all text-body duration-200 mr-4">NURSERY</span>
                 </div>
             </div>
         </a>
@@ -61,7 +61,7 @@
                             Humidity
                         </a>
                     </li>
-                    {{-- <li>
+                    <!-- {{-- <li>
                         <a href="{{ route('riwayat.amonia') }}"
                             class="flex items-center block mx-2 py-1 text-white text-body hover:text-brown-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
                            Amonia
@@ -78,7 +78,7 @@
                             class="flex items-center block mx-2 py-1 text-white text-body hover:text-brown-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
                            Karbon Dioksida
                         </a>
-                    </li> --}}
+                    </li> --}} -->
                 </ul>
             </li>
             @if (Auth::user()->role == 'admin')
