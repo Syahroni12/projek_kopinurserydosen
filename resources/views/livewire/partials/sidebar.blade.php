@@ -4,7 +4,7 @@
         <a class="flex items-center justify-center w-full" href="#">
             <div class="flex-1 flex justify-center items-center">
                 <div>
-                    <img src="{{ asset('images/login/logo-login.png') }}"
+                    <img src="{{ asset('images/logo-kopi.png') }}"
                         class="inline h-10 w-10 transition-all duration-200 ease-nav-brand" alt="main_logo" />
                 </div>
                 <div class="ml-2">

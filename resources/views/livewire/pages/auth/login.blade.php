@@ -27,7 +27,7 @@ new #[Layout('layouts.guest')] class extends Component {
 <div class="min-h-screen flex flex-col justify-center items-center pt-6 sm:pt-0 bg-dgreen-100">
     <div class="text-center mb-6">
         <a href="/" wire:navigate>
-            <img src="{{ asset('images/login/logo-login.png') }}" class="w-20 h-20 mx-auto">
+            <img src="{{ asset('images/logo-kopi.png') }}" class="w-20 h-20 mx-auto">
         </a>
     </div>
 
