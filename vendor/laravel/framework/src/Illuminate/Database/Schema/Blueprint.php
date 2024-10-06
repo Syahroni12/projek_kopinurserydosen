@@ -327,7 +327,7 @@ class Blueprint
     public function creating()
     {
         return collect($this->commands)->contains(function ($command) {
-            return $command->name === 'create';
+            return ! $command instanceof ColumnDefinition && $command->name === 'create';
         });
     }
 
@@ -1453,6 +1453,18 @@ class Blueprint
     }
 
     /**
+     * Create a new vector column on the table.
+     *
+     * @param  string  $column
+     * @param  int  $dimensions
+     * @return \Illuminate\Database\Schema\ColumnDefinition
+     */
+    public function vector($column, $dimensions)
+    {
+        return $this->addColumn('vector', $column, compact('dimensions'));
+    }
+
+    /**
      * Add the proper columns for a polymorphic table.
      *
      * @param  string  $name
@@ -1807,7 +1819,7 @@ class Blueprint
         return $this->commands;
     }
 
-    /*
+    /**
      * Determine if the blueprint has state.
      *
      * @param  mixed  $name

@@ -14,12 +14,19 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     @vite('resources/css/app.css')
+
+    <style>
+        .bg-brown {
+            background-color: #A0522D;
+            /* Kode HEX warna coklat */
+        }
+    </style>
 </head>
 
 <body class="flex flex-col h-screen" style="background-color: #f3f4f6;">
     <div class="flex h-screen">
         <aside class="text-white w-52 flex-shrink-0 hidden lg:block "
-            style="background-image: url('{{ asset('images/bg-sidebar.png') }}');">
+            style="background-image: url('{{ asset('images/sidebar-bg.png') }}');">
             <div class="flex items-center justify-between pt-8 pb-4">
                 <a class="flex items-center justify-center w-full" href="#">
                     <div class="flex-1 flex justify-center items-center">
@@ -29,9 +36,9 @@
                         </div>
                         <div class="ml-2">
                             <span
-                                class="block font-semibold text-lwhite transition-all text-body duration-200 mr-4">GUMUKMAS</span>
+                                class="block font-semibold text-lwhite transition-all text-body duration-200 mr-4">KOPI</span>
                             <span
-                                class="block font-semibold text-lwhite transition-all text-body duration-200 mr-4">MULTIFARM</span>
+                                class="block font-semibold text-lwhite transition-all text-body duration-200 mr-4">NURSERY</span>
                         </div>
                     </div>
                 </a>
@@ -81,7 +88,7 @@
                                     Humidity
                                 </a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="{{ route('riwayat.amonia') }}"
                                     class="flex items-center block mx-2 py-1 text-white text-body hover:text-green-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
                                     Amonia
@@ -98,7 +105,7 @@
                                     class="flex items-center block mx-2 py-1 text-white text-body hover:text-green-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
                                     Karbon Dioksida
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </li>
                     @if (Auth::user()->role == 'admin')
@@ -165,7 +172,7 @@
                     <div class="flex justify-between items-center px-4 py-3 border-b border-gray-200 bg-gray-50">
                         <h6 class="m-0 font-semibold text-gray-700">Riwayat Temperature</h6>
                         <a href="#" id="export-btn"
-                            class="py-1 px-3 bg-dgreen text-body font-semibold text-lwhite rounded-md flex items-center space-x-2">
+                            class="py-1 px-3 bg-brown text-body font-semibold text-lwhite rounded-md flex items-center space-x-2">
                             <svg class="w-4 h-4 text-white dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 18">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -179,7 +186,7 @@
                         <div class="overflow-x-auto mt-4">
                             <div class="flex items-end justify-end">
                                 <div id="daterange"
-                                    class="py-2 px-3 bg-dgreen text-body font-semibold text-lwhite rounded-md flex items-center space-x-2">
+                                    class="py-2 px-3 bg-brown text-body font-semibold text-lwhite rounded-md flex items-center space-x-2">
                                     <svg class="w-4 h-4 text-white dark:text-white" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                         <path
