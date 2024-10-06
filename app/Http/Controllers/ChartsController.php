@@ -16,11 +16,10 @@ class ChartsController extends Controller
         function getLatestData($id_alat)
         {
             return [
-                'Dioksida' => Dioksida::where('id_alat', $id_alat)->limit(1)->latest()->get(),
-                'Metana' => Metana::where('id_alat', $id_alat)->limit(1)->latest()->get(),
+              
                 'Humidity' => Humidity::where('id_alat', $id_alat)->limit(1)->latest()->get(),
                 'Temperature' => Temperature::where('id_alat', $id_alat)->limit(1)->latest()->get(),
-                'Amonia' => Amonia::where('id_alat', $id_alat)->limit(1)->latest()->get(),
+               
             ];
         }
 
@@ -30,29 +29,25 @@ class ChartsController extends Controller
         $data4 = getLatestData(4);
 
         $data = [
-            'Dioksida1' => $data1['Dioksida'],
-            'Metana1' => $data1['Metana'],
+        
             'Humidity1' => $data1['Humidity'],
             'Temperature1' => $data1['Temperature'],
-            'Amonia1' => $data1['Amonia'],
+            // 'Amonia1' => $data1['Amonia'],
 
-            'Dioksida2' => $data2['Dioksida'],
-            'Metana2' => $data2['Metana'],
+         
             'Humidity2' => $data2['Humidity'],
             'Temperature2' => $data2['Temperature'],
-            'Amonia2' => $data2['Amonia'],
+           
 
-            'Dioksida3' => $data3['Dioksida'],
-            'Metana3' => $data3['Metana'],
+         
             'Humidity3' => $data3['Humidity'],
             'Temperature3' => $data3['Temperature'],
-            'Amonia3' => $data3['Amonia'],
+            
 
-            'Dioksida4' => $data4['Dioksida'],
-            'Metana4' => $data4['Metana'],
+          
             'Humidity4' => $data4['Humidity'],
             'Temperature4' => $data4['Temperature'],
-            'Amonia4' => $data4['Amonia'],
+            
         ];
 
         return view('dashboard', $data);

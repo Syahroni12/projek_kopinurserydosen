@@ -130,7 +130,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="grid grid-cols-3 gap-4">
+                {{-- <div class="grid grid-cols-3 gap-4">
                     <div class="col-span-2">
                         <div class="bg-white shadow-lg rounded-lg mb-4">
                             <div
@@ -167,9 +167,9 @@
                             <p id="lastUpdatedDioksida" class="text-white text-sm"></p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
-                <div class="grid grid-cols-3 gap-4">
+                {{-- <div class="grid grid-cols-3 gap-4">
                     <div class="col-span-2">
                         <div class="bg-white shadow-lg rounded-lg mb-4">
                             <div
@@ -210,9 +210,9 @@
                     </div>
 
 
-                </div>
+                </div> --}}
 
-                <div class="grid grid-cols-3 gap-4">
+                {{-- <div class="grid grid-cols-3 gap-4">
                     <div class="col-span-2">
                         <div class="bg-white shadow-lg rounded-lg mb-4">
                             <div
@@ -251,7 +251,7 @@
                             <p id="lastUpdatedAmonia" class="text-white text-sm"></p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </main>
 
             <!-- Footer -->

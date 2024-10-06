@@ -18,7 +18,7 @@
 </head>
 <style>
     body {
-        background-color: #065F46;
+        background-color: #914F1E;
         background-image: url('{{ asset('images/footer/footer.png') }}');
         background-size: cover;
         background-position: center;

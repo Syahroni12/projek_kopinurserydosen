@@ -14,16 +14,17 @@
     @endif
 
 <table class="min-w-full bg-white border-collapse border border-gray-200">
-    <thead class="bg-dgreen">
+    <thead style="background-color: #914F1E;">
         <tr>
-            <th class="bg-dgreen text-body text-white font-semibold px-4 py-2">No</th>
-            <th class="bg-dgreen text-body text-white font-semibold px-4 py-2">Gambar</th>
-            <th class="bg-dgreen text-body text-white font-semibold px-4 py-2">Judul Blog</th>
-            <th class="bg-dgreen text-body text-white font-semibold px-4 py-2">Deskripsi</th>
-            <th class="bg-dgreen text-body text-white font-semibold px-4 py-2">Kategori</th>
-            <th class="bg-dgreen text-body text-white font-semibold px-4 py-2">Aksi</th>
+            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #914F1E;">No</th>
+            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #914F1E;">Gambar</th>
+            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #914F1E;">Judul Blog</th>
+            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #914F1E;">Deskripsi</th>
+            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #914F1E;">Kategori</th>
+            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #914F1E;">Aksi</th>
         </tr>
     </thead>
+    
     <tbody>
         @foreach ($blog as $item)
             <tr class="">

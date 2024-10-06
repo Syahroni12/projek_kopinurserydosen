@@ -63,8 +63,7 @@
                         </div>
                     </div>
                     <div class="pb-4">
-                        <div
-                            class="bg-dgreen h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center">
+                        <div class="h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center" style="background-color: #914F1E;">
                             <div class="flex justify-between w-full mb-6 items-center">
                                 <p class="text-white text-sm font-bold">Temperature (CH4)</p>
                                 <div class="flex items-center">
@@ -72,22 +71,23 @@
                                     <p class="text-white text-sm" id="percentageValueTemperature"></p>
                                 </div>
                             </div>
-
+                        
                             <div class="progress-container">
                                 <div id="progressFillTemperature" class="progress-bar-fill"></div>
                                 <div id="progressNeedleTemperature" class="progress-needle"></div>
                             </div>
-
+                        
                             <div class="flex justify-between w-full mb-6">
                                 <p class="text-white text-sm">Buruk</p>
                                 <p class="text-white text-sm">Baik</p>
                             </div>
-
+                        
                             <p class="text-white text-sm">Temperature (CH4)</p>
                             <p class="text-white text-sm">Saat ini</p>
                             <div id="latestValueTemperature" class="text-white text-5xl font-bold mb-4"></div>
                             <p id="lastUpdatedTemperature" class="text-white text-sm"></p>
                         </div>
+                        
                     </div>
                 </div>
                 <div class="grid grid-cols-3 gap-4">
@@ -103,8 +103,7 @@
                         </div>
                     </div>
                     <div class="pb-4">
-                        <div
-                            class="bg-dgreen h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center">
+                        <div class="h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center" style="background-color: #914F1E;">
                             <div class="flex justify-between w-full mb-6 items-center">
                                 <p class="text-white text-sm font-bold">Humidity (CH4)</p>
                                 <div class="flex items-center">
@@ -131,7 +130,7 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-3 gap-4">
-                    <div class="col-span-2">
+                    {{-- <div class="col-span-2">
                         <div class="bg-white shadow-lg rounded-lg mb-4">
                             <div
                                 class="flex justify-between items-center px-4 py-3 border-b border-gray-200 bg-gray-50">
@@ -141,8 +140,8 @@
                                 <canvas id="chartDioksida"></canvas>
                             </div>
                         </div>
-                    </div>
-                    <div class="pb-4">
+                    </div> --}}
+                    {{-- <div class="pb-4">
                         <div
                             class="bg-dgreen h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center">
                             <div class="flex justify-between w-full mb-6 items-center">
@@ -166,11 +165,11 @@
                             <div id="latestValueDioksida" class="text-white text-5xl font-bold mb-4"></div>
                             <p id="lastUpdatedDioksida" class="text-white text-sm"></p>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="grid grid-cols-3 gap-4">
-                    <div class="col-span-2">
+                    {{-- <div class="col-span-2">
                         <div class="bg-white shadow-lg rounded-lg mb-4">
                             <div
                                 class="flex justify-between items-center px-4 py-3 border-b border-gray-200 bg-gray-50">
@@ -180,8 +179,8 @@
                                 <canvas id="chartMetana"></canvas>
                             </div>
                         </div>
-                    </div>
-                    <div class="pb-4">
+                    </div> --}}
+                    {{-- <div class="pb-4">
                         <div
                             class="bg-dgreen h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center">
                             <div class="flex justify-between w-full mb-6 items-center">
@@ -207,13 +206,13 @@
                             <div id="latestValueMetana" class="text-white text-5xl font-bold mb-4"></div>
                             <p id="lastUpdatedMetana" class="text-white text-sm"></p>
                         </div>
-                    </div>
+                    </div> --}}
 
 
                 </div>
 
                 <div class="grid grid-cols-3 gap-4">
-                    <div class="col-span-2">
+                    {{-- <div class="col-span-2">
                         <div class="bg-white shadow-lg rounded-lg mb-4">
                             <div
                                 class="flex justify-between items-center px-4 py-3 border-b border-gray-200 bg-gray-50">
@@ -223,9 +222,9 @@
                                 <canvas id="chartAmonia"></canvas>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="pb-4">
-                        <div
+                        {{-- <div
                             class="bg-dgreen h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center">
                             <div class="flex justify-between w-full mb-6 items-center">
                                 <p class="text-white text-sm font-bold">Amonia</p>
@@ -249,7 +248,7 @@
                             <p class="text-white text-sm">Saat ini</p>
                             <div id="latestValueAmonia" class="text-white text-5xl font-bold mb-4"></div>
                             <p id="lastUpdatedAmonia" class="text-white text-sm"></p>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </main>
@@ -267,63 +266,63 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        var ctxDioksida = document.getElementById("chartDioksida").getContext('2d');
-        var chartDioksida = new Chart(ctxDioksida, {
-            type: 'line',
-            data: {
-                labels: [],
-                datasets: [{
-                    label: 'Karbon Dioksida',
-                    data: [],
-                    borderColor: 'red', // Warna garis merah
-                    borderWidth: 1,
-                    backgroundColor: 'rgba(255, 0, 0, 0.2)' // Warna background dengan transparansi
-                }]
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }],
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
+        // var ctxDioksida = document.getElementById("chartDioksida").getContext('2d');
+        // var chartDioksida = new Chart(ctxDioksida, {
+        //     type: 'line',
+        //     data: {
+        //         labels: [],
+        //         datasets: [{
+        //             label: 'Karbon Dioksida',
+        //             data: [],
+        //             borderColor: 'red', // Warna garis merah
+        //             borderWidth: 1,
+        //             backgroundColor: 'rgba(255, 0, 0, 0.2)' // Warna background dengan transparansi
+        //         }]
+        //     },
+        //     options: {
+        //         scales: {
+        //             xAxes: [{
+        //                 ticks: {
+        //                     beginAtZero: true
+        //                 }
+        //             }],
+        //             yAxes: [{
+        //                 ticks: {
+        //                     beginAtZero: true
+        //                 }
+        //             }]
+        //         }
+        //     }
+        // });
 
-        var ctxMetana = document.getElementById("chartMetana").getContext('2d');
-        var chartMetana = new Chart(ctxMetana, {
-            type: 'line',
-            data: {
-                labels: [],
-                datasets: [{
-                    label: 'Metana',
-                    data: [],
-                    borderColor: 'green', // Warna garis hijau
-                    borderWidth: 1,
-                    backgroundColor: 'rgba(0, 255, 0, 0.2)' // Warna background dengan transparansi
-                }]
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }],
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
+        // var ctxMetana = document.getElementById("chartMetana").getContext('2d');
+        // var chartMetana = new Chart(ctxMetana, {
+        //     type: 'line',
+        //     data: {
+        //         labels: [],
+        //         datasets: [{
+        //             label: 'Metana',
+        //             data: [],
+        //             borderColor: 'green', // Warna garis hijau
+        //             borderWidth: 1,
+        //             backgroundColor: 'rgba(0, 255, 0, 0.2)' // Warna background dengan transparansi
+        //         }]
+        //     },
+        //     options: {
+        //         scales: {
+        //             xAxes: [{
+        //                 ticks: {
+        //                     beginAtZero: true
+        //                 }
+        //             }],
+        //             yAxes: [{
+        //                 ticks: {
+        //                     beginAtZero: true
+        //                 }
+        //             }]
+        //         }
+        //     }
+        // });
 
         var ctxHumidity = document.getElementById("chartHumidity").getContext('2d');
         var chartHumidity = new Chart(ctxHumidity, {
@@ -384,131 +383,131 @@
             }
         });
 
-        var ctxAmonia = document.getElementById("chartAmonia").getContext('2d');
-        var chartAmonia = new Chart(ctxAmonia, {
-            type: 'line',
-            data: {
-                labels: [],
-                datasets: [{
-                    label: 'Amonia',
-                    data: [],
-                    borderColor: 'orange', // Warna garis ungu
-                    borderWidth: 1,
-                    backgroundColor: 'rgba(255, 165, 0, 0.2)'
-                    }]
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }],
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
+        // var ctxAmonia = document.getElementById("chartAmonia").getContext('2d');
+        // var chartAmonia = new Chart(ctxAmonia, {
+        //     type: 'line',
+        //     data: {
+        //         labels: [],
+        //         datasets: [{
+        //             label: 'Amonia',
+        //             data: [],
+        //             borderColor: 'orange', // Warna garis ungu
+        //             borderWidth: 1,
+        //             backgroundColor: 'rgba(255, 165, 0, 0.2)'
+        //             }]
+        //     },
+        //     options: {
+        //         scales: {
+        //             xAxes: [{
+        //                 ticks: {
+        //                     beginAtZero: true
+        //                 }
+        //             }],
+        //             yAxes: [{
+        //                 ticks: {
+        //                     beginAtZero: true
+        //                 }
+        //             }]
+        //         }
+        //     }
+        // });
 
 
-        var updateChartDioksida = function() {
-            $.ajax({
-                url: "{{ route('api.chartdioksida', ['id' => 1]) }}",
-                type: 'GET',
-                dataType: 'json',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(data) {
-                    // Update chart
-                    chartDioksida.data.labels = data.labels;
-                    chartDioksida.data.datasets[0].data = data.data;
-                    chartDioksida.update();
+        // var updateChartDioksida = function() {
+        //     $.ajax({
+        //         url: "{{ route('api.chartdioksida', ['id' => 1]) }}",
+        //         type: 'GET',
+        //         dataType: 'json',
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         success: function(data) {
+        //             // Update chart
+        //             chartDioksida.data.labels = data.labels;
+        //             chartDioksida.data.datasets[0].data = data.data;
+        //             chartDioksida.update();
 
-                    // Update the latest value and last updated time
-                    var latestValue = data.latest.nilai_dioksida;
-                    var lastUpdated = new Date(data.latest.created_at).toLocaleString();
-                    $('#latestValueDioksida').text(latestValue);
-                    $('#lastUpdatedDioksida').text('Terakhir update ' + lastUpdated);
+        //             // Update the latest value and last updated time
+        //             var latestValue = data.latest.nilai_dioksida;
+        //             var lastUpdated = new Date(data.latest.created_at).toLocaleString();
+        //             $('#latestValueDioksida').text(latestValue);
+        //             $('#lastUpdatedDioksida').text('Terakhir update ' + lastUpdated);
 
-                    // Calculate the percentage for the progress bar and needle position
-                    var minValue = 60;
-                    var maxValue = 65;
-                    var percentage = ((latestValue - minValue) / (maxValue - minValue)) * 100;
+        //             // Calculate the percentage for the progress bar and needle position
+        //             var minValue = 60;
+        //             var maxValue = 65;
+        //             var percentage = ((latestValue - minValue) / (maxValue - minValue)) * 100;
 
-                    // Update the progress bar and needle position
-                    var progressFill = $('#progressFill');
-                    var progressNeedle = $('#progressNeedle');
-                    progressFill.css('width', percentage + '%');
-                    progressNeedle.css('left', percentage + '%');
-                    $('#percentageValue').text(percentage.toFixed(2) + '%');
+        //             // Update the progress bar and needle position
+        //             var progressFill = $('#progressFill');
+        //             var progressNeedle = $('#progressNeedle');
+        //             progressFill.css('width', percentage + '%');
+        //             progressNeedle.css('left', percentage + '%');
+        //             $('#percentageValue').text(percentage.toFixed(2) + '%');
 
-                    // Update the color of the small circle based on percentage
-                    var colorIndicator = $('#colorIndicator');
-                    if (percentage <= 33) {
-                        colorIndicator.css('background-color', 'red');
-                    } else if (percentage <= 66) {
-                        colorIndicator.css('background-color', 'yellow');
-                    } else {
-                        colorIndicator.css('background-color', 'green');
-                    }
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        }
+        //             // Update the color of the small circle based on percentage
+        //             var colorIndicator = $('#colorIndicator');
+        //             if (percentage <= 33) {
+        //                 colorIndicator.css('background-color', 'red');
+        //             } else if (percentage <= 66) {
+        //                 colorIndicator.css('background-color', 'yellow');
+        //             } else {
+        //                 colorIndicator.css('background-color', 'green');
+        //             }
+        //         },
+        //         error: function(data) {
+        //             console.log(data);
+        //         }
+        //     });
+        // }
 
-        var updateChartMetana = function() {
-            $.ajax({
-                url: "{{ route('api.chartmetana', ['id' => 1]) }}",
-                type: 'GET',
-                dataType: 'json',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(data) {
-                    // Update chart
-                    chartMetana.data.labels = data.labels;
-                    chartMetana.data.datasets[0].data = data.data;
-                    chartMetana.update();
+        // var updateChartMetana = function() {
+        //     $.ajax({
+        //         url: "{{ route('api.chartmetana', ['id' => 1]) }}",
+        //         type: 'GET',
+        //         dataType: 'json',
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         success: function(data) {
+        //             // Update chart
+        //             chartMetana.data.labels = data.labels;
+        //             chartMetana.data.datasets[0].data = data.data;
+        //             chartMetana.update();
 
-                    // Update the latest value and last updated time
-                    var latestValue = data.latest.nilai_metana;
-                    var lastUpdated = new Date(data.latest.created_at).toLocaleString();
-                    $('#latestValueMetana').text(latestValue);
-                    $('#lastUpdatedMetana').text('Terakhir update ' + lastUpdated);
+        //             // Update the latest value and last updated time
+        //             var latestValue = data.latest.nilai_metana;
+        //             var lastUpdated = new Date(data.latest.created_at).toLocaleString();
+        //             $('#latestValueMetana').text(latestValue);
+        //             $('#lastUpdatedMetana').text('Terakhir update ' + lastUpdated);
 
-                    // Calculate percentage for the progress bar and needle position
-                    var minValue = 20; // Ganti dengan nilai minimum kadar metana
-                    var maxValue = 100; // Ganti dengan nilai maksimum kadar metana
-                    var percentage = ((latestValue - minValue) / (maxValue - minValue)) * 100;
+        //             // Calculate percentage for the progress bar and needle position
+        //             var minValue = 20; // Ganti dengan nilai minimum kadar metana
+        //             var maxValue = 100; // Ganti dengan nilai maksimum kadar metana
+        //             var percentage = ((latestValue - minValue) / (maxValue - minValue)) * 100;
 
-                    // Update the progress bar and needle position
-                    var progressFill = $('#progressFillMetana');
-                    var progressNeedle = $('#progressNeedleMetana');
-                    progressFill.css('width', percentage + '%');
-                    progressNeedle.css('left', percentage + '%');
-                    $('#percentageValueMetana').text(percentage.toFixed(2) + '%');
+        //             // Update the progress bar and needle position
+        //             var progressFill = $('#progressFillMetana');
+        //             var progressNeedle = $('#progressNeedleMetana');
+        //             progressFill.css('width', percentage + '%');
+        //             progressNeedle.css('left', percentage + '%');
+        //             $('#percentageValueMetana').text(percentage.toFixed(2) + '%');
 
-                    // Update the color of the small circle based on percentage
-                    var colorIndicator = $('#colorIndicatorMetana');
-                    if (percentage <= 33) {
-                        colorIndicator.css('background-color', 'red');
-                    } else if (percentage <= 66) {
-                        colorIndicator.css('background-color', 'yellow');
-                    } else {
-                        colorIndicator.css('background-color', 'green');
-                    }
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        }
+        //             // Update the color of the small circle based on percentage
+        //             var colorIndicator = $('#colorIndicatorMetana');
+        //             if (percentage <= 33) {
+        //                 colorIndicator.css('background-color', 'red');
+        //             } else if (percentage <= 66) {
+        //                 colorIndicator.css('background-color', 'yellow');
+        //             } else {
+        //                 colorIndicator.css('background-color', 'green');
+        //             }
+        //         },
+        //         error: function(data) {
+        //             console.log(data);
+        //         }
+        //     });
+        // }
 
         var updateChartHumidity = function() {
             $.ajax({
@@ -606,66 +605,66 @@
             });
         }
 
-        var updateChartAmonia = function() {
-            $.ajax({
-                url: "{{ route('api.chartamonia', ['id' => 1]) }}",
-                type: 'GET',
-                dataType: 'json',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(data) {
-                    // Update chart
-                    chartAmonia.data.labels = data.labels;
-                    chartAmonia.data.datasets[0].data = data.data;
-                    chartAmonia.update();
+        // var updateChartAmonia = function() {
+        //     $.ajax({
+        //         url: "{{ route('api.chartamonia', ['id' => 1]) }}",
+        //         type: 'GET',
+        //         dataType: 'json',
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         success: function(data) {
+        //             // Update chart
+        //             chartAmonia.data.labels = data.labels;
+        //             chartAmonia.data.datasets[0].data = data.data;
+        //             chartAmonia.update();
 
-                    // Update the latest value and last updated time
-                    var latestValue = data.latest.nilai_amonia;
-                    var lastUpdated = new Date(data.latest.created_at).toLocaleString();
-                    $('#latestValueAmonia').text(latestValue);
-                    $('#lastUpdatedAmonia').text('Terakhir update ' + lastUpdated);
+        //             // Update the latest value and last updated time
+        //             var latestValue = data.latest.nilai_amonia;
+        //             var lastUpdated = new Date(data.latest.created_at).toLocaleString();
+        //             $('#latestValueAmonia').text(latestValue);
+        //             $('#lastUpdatedAmonia').text('Terakhir update ' + lastUpdated);
 
-                    // Calculate percentage for the progress bar and needle position
-                    var minValue = 20; // Ganti dengan nilai minimum kadar metana
-                    var maxValue = 100; // Ganti dengan nilai maksimum kadar metana
-                    var percentage = ((latestValue - minValue) / (maxValue - minValue)) * 100;
+        //             // Calculate percentage for the progress bar and needle position
+        //             var minValue = 20; // Ganti dengan nilai minimum kadar metana
+        //             var maxValue = 100; // Ganti dengan nilai maksimum kadar metana
+        //             var percentage = ((latestValue - minValue) / (maxValue - minValue)) * 100;
 
-                    // Update the progress bar and needle position
-                    var progressFill = $('#progressFillAmonia');
-                    var progressNeedle = $('#progressNeedleAmonia');
-                    progressFill.css('width', percentage + '%');
-                    progressNeedle.css('left', percentage + '%');
-                    $('#percentageValueAmonia').text(percentage.toFixed(2) + '%');
+        //             // Update the progress bar and needle position
+        //             var progressFill = $('#progressFillAmonia');
+        //             var progressNeedle = $('#progressNeedleAmonia');
+        //             progressFill.css('width', percentage + '%');
+        //             progressNeedle.css('left', percentage + '%');
+        //             $('#percentageValueAmonia').text(percentage.toFixed(2) + '%');
 
-                    // Update the color of the small circle based on percentage
-                    var colorIndicator = $('#colorIndicatorAmonia');
-                    if (percentage <= 33) {
-                        colorIndicator.css('background-color', 'red');
-                    } else if (percentage <= 66) {
-                        colorIndicator.css('background-color', 'yellow');
-                    } else {
-                        colorIndicator.css('background-color', 'green');
-                    }
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        }
+        //             // Update the color of the small circle based on percentage
+        //             var colorIndicator = $('#colorIndicatorAmonia');
+        //             if (percentage <= 33) {
+        //                 colorIndicator.css('background-color', 'red');
+        //             } else if (percentage <= 66) {
+        //                 colorIndicator.css('background-color', 'yellow');
+        //             } else {
+        //                 colorIndicator.css('background-color', 'green');
+        //             }
+        //         },
+        //         error: function(data) {
+        //             console.log(data);
+        //         }
+        //     });
+        // }
 
-        updateChartDioksida();
-        updateChartMetana();
+        // updateChartDioksida();
+        // updateChartMetana();
         updateChartHumidity();
         updateChartTemperature();
-        updateChartAmonia();
+        // updateChartAmonia();
 
         setInterval(() => {
-            updateChartDioksida();
-            updateChartMetana();
+            // updateChartDioksida();
+            // updateChartMetana();
             updateChartHumidity();
             updateChartTemperature();
-            updateChartAmonia();
+            // updateChartAmonia();
 
         }, 3000);
     </script>

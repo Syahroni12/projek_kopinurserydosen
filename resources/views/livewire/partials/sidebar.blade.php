@@ -20,7 +20,7 @@
         <ul class="space-y-2 font-medium">
             <li>
                 <a href="{{ route('dashboard') }}"
-                    class="flex items-center block py-2 text-white text-body hover:text-green-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
+                    class="flex items-center block py-2 text-white text-body hover:text-brown-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
                         fill="currentColor">
                         <path
@@ -35,7 +35,7 @@
             </li>
             <li>
                 <a type="button"
-                    class="flex items-center block py-2 text-white text-body hover:text-green-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200"
+                    class="flex items-center block py-2 text-white text-body hover:text-brown-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200"
                     aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
                         fill="currentColor">
@@ -51,31 +51,31 @@
                 <ul id="dropdown-example" class="hidden">
                     <li>
                         <a href="{{ route('riwayat.temperature') }}"
-                            class="flex items-center block mx-2 py-1 text-white text-body hover:text-green-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
+                            class="flex items-center block mx-2 py-1 text-white text-body hover:text-brown-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
                             Temperature
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('riwayat.humidity') }}"
-                            class="flex items-center block mx-2 py-1 text-white text-body hover:text-green-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
+                            class="flex items-center block mx-2 py-1 text-white text-body hover:text-brown-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
                             Humidity
                         </a>
                     </li>
                     {{-- <li>
                         <a href="{{ route('riwayat.amonia') }}"
-                            class="flex items-center block mx-2 py-1 text-white text-body hover:text-green-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
+                            class="flex items-center block mx-2 py-1 text-white text-body hover:text-brown-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
                            Amonia
                         </a>
                     </li> --}}
                     {{-- <li>
                         <a href="{{ route('riwayat.metana') }}"
-                            class="flex items-center block mx-2 py-1 text-white text-body hover:text-green-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
+                            class="flex items-center block mx-2 py-1 text-white text-body hover:text-brown-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
                            Metana
                         </a>
                     </li> --}}
                     {{-- <li>
                         <a href="{{ route('riwayat.dioksida') }}"
-                            class="flex items-center block mx-2 py-1 text-white text-body hover:text-green-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
+                            class="flex items-center block mx-2 py-1 text-white text-body hover:text-brown-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
                            Karbon Dioksida
                         </a>
                     </li> --}}
@@ -84,7 +84,7 @@
             @if (Auth::user()->role == 'admin')
             <li>
                 <a href="{{ route('karyawan') }}"
-                    class="flex items-center block py-2 text-white text-body hover:text-green-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
+                    class="flex items-center block py-2 text-white text-body hover:text-brown-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
                         fill="currentColor">
                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
@@ -98,7 +98,7 @@
             @endif
             <li>
                 <a href="{{ route('blog') }}"
-                    class="flex items-center block py-2 text-white text-body hover:text-green-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
+                    class="flex items-center block py-2 text-white text-body hover:text-brown-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
                         fill="currentColor">
                         <path

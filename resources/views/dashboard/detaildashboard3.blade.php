@@ -384,131 +384,131 @@
             }
         });
 
-        var ctxAmonia = document.getElementById("chartAmonia").getContext('2d');
-        var chartAmonia = new Chart(ctxAmonia, {
-            type: 'line',
-            data: {
-                labels: [],
-                datasets: [{
-                    label: 'Amonia',
-                    data: [],
-                    borderColor: 'orange', // Warna garis ungu
-                    borderWidth: 1,
-                    backgroundColor: 'rgba(255, 165, 0, 0.2)'
-                    }]
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }],
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
+        // var ctxAmonia = document.getElementById("chartAmonia").getContext('2d');
+        // var chartAmonia = new Chart(ctxAmonia, {
+        //     type: 'line',
+        //     data: {
+        //         labels: [],
+        //         datasets: [{
+        //             label: 'Amonia',
+        //             data: [],
+        //             borderColor: 'orange', // Warna garis ungu
+        //             borderWidth: 1,
+        //             backgroundColor: 'rgba(255, 165, 0, 0.2)'
+        //         }]
+        //     },
+        //     options: {
+        //         scales: {
+        //             xAxes: [{
+        //                 ticks: {
+        //                     beginAtZero: true
+        //                 }
+        //             }],
+        //             yAxes: [{
+        //                 ticks: {
+        //                     beginAtZero: true
+        //                 }
+        //             }]
+        //         }
+        //     }
+        // });
 
 
-        var updateChartDioksida = function() {
-            $.ajax({
-                url: "{{ route('api.chartdioksida', ['id' => 3]) }}",
-                type: 'GET',
-                dataType: 'json',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(data) {
-                    // Update chart
-                    chartDioksida.data.labels = data.labels;
-                    chartDioksida.data.datasets[0].data = data.data;
-                    chartDioksida.update();
+        // var updateChartDioksida = function() {
+        //     $.ajax({
+        //         url: "{{ route('api.chartdioksida', ['id' => 3]) }}",
+        //         type: 'GET',
+        //         dataType: 'json',
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         success: function(data) {
+        //             // Update chart
+        //             chartDioksida.data.labels = data.labels;
+        //             chartDioksida.data.datasets[0].data = data.data;
+        //             chartDioksida.update();
 
-                    // Update the latest value and last updated time
-                    var latestValue = data.latest.nilai_dioksida;
-                    var lastUpdated = new Date(data.latest.updated_at).toLocaleString();
-                    $('#latestValueDioksida').text(latestValue);
-                    $('#lastUpdatedDioksida').text('Terakhir update ' + lastUpdated);
+        //             // Update the latest value and last updated time
+        //             var latestValue = data.latest.nilai_dioksida;
+        //             var lastUpdated = new Date(data.latest.updated_at).toLocaleString();
+        //             $('#latestValueDioksida').text(latestValue);
+        //             $('#lastUpdatedDioksida').text('Terakhir update ' + lastUpdated);
 
-                    // Calculate the percentage for the progress bar and needle position
-                    var minValue = 60;
-                    var maxValue = 65;
-                    var percentage = ((latestValue - minValue) / (maxValue - minValue)) * 100;
+        //             // Calculate the percentage for the progress bar and needle position
+        //             var minValue = 60;
+        //             var maxValue = 65;
+        //             var percentage = ((latestValue - minValue) / (maxValue - minValue)) * 100;
 
-                    // Update the progress bar and needle position
-                    var progressFill = $('#progressFill');
-                    var progressNeedle = $('#progressNeedle');
-                    progressFill.css('width', percentage + '%');
-                    progressNeedle.css('left', percentage + '%');
-                    $('#percentageValue').text(percentage.toFixed(2) + '%');
+        //             // Update the progress bar and needle position
+        //             var progressFill = $('#progressFill');
+        //             var progressNeedle = $('#progressNeedle');
+        //             progressFill.css('width', percentage + '%');
+        //             progressNeedle.css('left', percentage + '%');
+        //             $('#percentageValue').text(percentage.toFixed(2) + '%');
 
-                    // Update the color of the small circle based on percentage
-                    var colorIndicator = $('#colorIndicator');
-                    if (percentage <= 33) {
-                        colorIndicator.css('background-color', 'red');
-                    } else if (percentage <= 66) {
-                        colorIndicator.css('background-color', 'yellow');
-                    } else {
-                        colorIndicator.css('background-color', 'green');
-                    }
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        }
+        //             // Update the color of the small circle based on percentage
+        //             var colorIndicator = $('#colorIndicator');
+        //             if (percentage <= 33) {
+        //                 colorIndicator.css('background-color', 'red');
+        //             } else if (percentage <= 66) {
+        //                 colorIndicator.css('background-color', 'yellow');
+        //             } else {
+        //                 colorIndicator.css('background-color', 'green');
+        //             }
+        //         },
+        //         error: function(data) {
+        //             console.log(data);
+        //         }
+        //     });
+        // }
 
-        var updateChartMetana = function() {
-            $.ajax({
-                url: "{{ route('api.chartmetana', ['id' => 3]) }}",
-                type: 'GET',
-                dataType: 'json',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(data) {
-                    // Update chart
-                    chartMetana.data.labels = data.labels;
-                    chartMetana.data.datasets[0].data = data.data;
-                    chartMetana.update();
+        // var updateChartMetana = function() {
+        //     $.ajax({
+        //         url: "{{ route('api.chartmetana', ['id' => 3]) }}",
+        //         type: 'GET',
+        //         dataType: 'json',
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         success: function(data) {
+        //             // Update chart
+        //             chartMetana.data.labels = data.labels;
+        //             chartMetana.data.datasets[0].data = data.data;
+        //             chartMetana.update();
 
-                    // Update the latest value and last updated time
-                    var latestValue = data.latest.nilai_metana;
-                    var lastUpdated = new Date(data.latest.updated_at).toLocaleString();
-                    $('#latestValueMetana').text(latestValue);
-                    $('#lastUpdatedMetana').text('Terakhir update ' + lastUpdated);
+        //             // Update the latest value and last updated time
+        //             var latestValue = data.latest.nilai_metana;
+        //             var lastUpdated = new Date(data.latest.updated_at).toLocaleString();
+        //             $('#latestValueMetana').text(latestValue);
+        //             $('#lastUpdatedMetana').text('Terakhir update ' + lastUpdated);
 
-                    // Calculate percentage for the progress bar and needle position
-                    var minValue = 20; // Ganti dengan nilai minimum kadar metana
-                    var maxValue = 100; // Ganti dengan nilai maksimum kadar metana
-                    var percentage = ((latestValue - minValue) / (maxValue - minValue)) * 100;
+        //             // Calculate percentage for the progress bar and needle position
+        //             var minValue = 20; // Ganti dengan nilai minimum kadar metana
+        //             var maxValue = 100; // Ganti dengan nilai maksimum kadar metana
+        //             var percentage = ((latestValue - minValue) / (maxValue - minValue)) * 100;
 
-                    // Update the progress bar and needle position
-                    var progressFill = $('#progressFillMetana');
-                    var progressNeedle = $('#progressNeedleMetana');
-                    progressFill.css('width', percentage + '%');
-                    progressNeedle.css('left', percentage + '%');
-                    $('#percentageValueMetana').text(percentage.toFixed(2) + '%');
+        //             // Update the progress bar and needle position
+        //             var progressFill = $('#progressFillMetana');
+        //             var progressNeedle = $('#progressNeedleMetana');
+        //             progressFill.css('width', percentage + '%');
+        //             progressNeedle.css('left', percentage + '%');
+        //             $('#percentageValueMetana').text(percentage.toFixed(2) + '%');
 
-                    // Update the color of the small circle based on percentage
-                    var colorIndicator = $('#colorIndicatorMetana');
-                    if (percentage <= 33) {
-                        colorIndicator.css('background-color', 'red');
-                    } else if (percentage <= 66) {
-                        colorIndicator.css('background-color', 'yellow');
-                    } else {
-                        colorIndicator.css('background-color', 'green');
-                    }
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        }
+        //             // Update the color of the small circle based on percentage
+        //             var colorIndicator = $('#colorIndicatorMetana');
+        //             if (percentage <= 33) {
+        //                 colorIndicator.css('background-color', 'red');
+        //             } else if (percentage <= 66) {
+        //                 colorIndicator.css('background-color', 'yellow');
+        //             } else {
+        //                 colorIndicator.css('background-color', 'green');
+        //             }
+        //         },
+        //         error: function(data) {
+        //             console.log(data);
+        //         }
+        //     });
+        // }
 
         var updateChartHumidity = function() {
             $.ajax({
@@ -606,53 +606,53 @@
             });
         }
 
-        var updateChartAmonia = function() {
-            $.ajax({
-                url: "{{ route('api.chartamonia', ['id' => 3]) }}",
-                type: 'GET',
-                dataType: 'json',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(data) {
-                    // Update chart
-                    chartAmonia.data.labels = data.labels;
-                    chartAmonia.data.datasets[0].data = data.data;
-                    chartAmonia.update();
+        // var updateChartAmonia = function() {
+        //     $.ajax({
+        //         url: "{{ route('api.chartamonia', ['id' => 3]) }}",
+        //         type: 'GET',
+        //         dataType: 'json',
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         success: function(data) {
+        //             // Update chart
+        //             chartAmonia.data.labels = data.labels;
+        //             chartAmonia.data.datasets[0].data = data.data;
+        //             chartAmonia.update();
 
-                    // Update the latest value and last updated time
-                    var latestValue = data.latest.nilai_amonia;
-                    var lastUpdated = new Date(data.latest.updated_at).toLocaleString();
-                    $('#latestValueAmonia').text(latestValue);
-                    $('#lastUpdatedAmonia').text('Terakhir update ' + lastUpdated);
+        //             // Update the latest value and last updated time
+        //             var latestValue = data.latest.nilai_amonia;
+        //             var lastUpdated = new Date(data.latest.updated_at).toLocaleString();
+        //             $('#latestValueAmonia').text(latestValue);
+        //             $('#lastUpdatedAmonia').text('Terakhir update ' + lastUpdated);
 
-                    // Calculate percentage for the progress bar and needle position
-                    var minValue = 20; // Ganti dengan nilai minimum kadar metana
-                    var maxValue = 100; // Ganti dengan nilai maksimum kadar metana
-                    var percentage = ((latestValue - minValue) / (maxValue - minValue)) * 100;
+        //             // Calculate percentage for the progress bar and needle position
+        //             var minValue = 20; // Ganti dengan nilai minimum kadar metana
+        //             var maxValue = 100; // Ganti dengan nilai maksimum kadar metana
+        //             var percentage = ((latestValue - minValue) / (maxValue - minValue)) * 100;
 
-                    // Update the progress bar and needle position
-                    var progressFill = $('#progressFillAmonia');
-                    var progressNeedle = $('#progressNeedleAmonia');
-                    progressFill.css('width', percentage + '%');
-                    progressNeedle.css('left', percentage + '%');
-                    $('#percentageValueAmonia').text(percentage.toFixed(2) + '%');
+        //             // Update the progress bar and needle position
+        //             var progressFill = $('#progressFillAmonia');
+        //             var progressNeedle = $('#progressNeedleAmonia');
+        //             progressFill.css('width', percentage + '%');
+        //             progressNeedle.css('left', percentage + '%');
+        //             $('#percentageValueAmonia').text(percentage.toFixed(2) + '%');
 
-                    // Update the color of the small circle based on percentage
-                    var colorIndicator = $('#colorIndicatorAmonia');
-                    if (percentage <= 33) {
-                        colorIndicator.css('background-color', 'red');
-                    } else if (percentage <= 66) {
-                        colorIndicator.css('background-color', 'yellow');
-                    } else {
-                        colorIndicator.css('background-color', 'green');
-                    }
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        }
+        //             // Update the color of the small circle based on percentage
+        //             var colorIndicator = $('#colorIndicatorAmonia');
+        //             if (percentage <= 33) {
+        //                 colorIndicator.css('background-color', 'red');
+        //             } else if (percentage <= 66) {
+        //                 colorIndicator.css('background-color', 'yellow');
+        //             } else {
+        //                 colorIndicator.css('background-color', 'green');
+        //             }
+        //         },
+        //         error: function(data) {
+        //             console.log(data);
+        //         }
+        //     });
+        // }
 
         updateChartDioksida();
         updateChartMetana();

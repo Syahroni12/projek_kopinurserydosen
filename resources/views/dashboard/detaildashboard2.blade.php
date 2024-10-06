@@ -130,46 +130,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="grid grid-cols-3 gap-4">
-                    <div class="col-span-2">
-                        <div class="bg-white shadow-lg rounded-lg mb-4">
-                            <div
-                                class="flex justify-between items-center px-4 py-3 border-b border-gray-200 bg-gray-50">
-                                <h6 class="m-0 font-semibold text-gray-700">Dashboard</h6>
-                            </div>
-                            <div class="px-4 pb-4">
-                                <canvas id="chartDioksida"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pb-4">
-                        <div
-                            class="bg-dgreen h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center">
-                            <div class="flex justify-between w-full mb-6 items-center">
-                                <p class="text-white text-sm font-bold">Karbon Dioksida</p>
-                                <div class="flex items-center">
-                                    <div id="colorIndicator" class="w-3 h-3 rounded-full mr-2"></div>
-                                    <p class="text-white text-sm" id="percentageValue"></p>
-                                </div>
-                            </div>
+               
 
-                            <div class="progress-container">
-                                <div id="progressFill" class="progress-bar-fill"></div>
-                                <div id="progressNeedle" class="progress-needle"></div>
-                            </div>
-                            <div class="flex justify-between w-full mb-6">
-                                <p class="text-white text-sm">Buruk</p>
-                                <p class="text-white text-sm">Baik</p>
-                            </div>
-                            <p class="text-white text-sm">Kadar Karbon Dioksida (CO2)</p>
-                            <p class="text-white text-sm">Saat ini</p>
-                            <div id="latestValueDioksida" class="text-white text-5xl font-bold mb-4"></div>
-                            <p id="lastUpdatedDioksida" class="text-white text-sm"></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-3 gap-4">
+                {{-- <div class="grid grid-cols-3 gap-4">
                     <div class="col-span-2">
                         <div class="bg-white shadow-lg rounded-lg mb-4">
                             <div
@@ -210,9 +173,9 @@
                     </div>
 
 
-                </div>
+                </div> --}}
 
-                <div class="grid grid-cols-3 gap-4">
+                {{-- <div class="grid grid-cols-3 gap-4">
                     <div class="col-span-2">
                         <div class="bg-white shadow-lg rounded-lg mb-4">
                             <div
@@ -251,7 +214,7 @@
                             <p id="lastUpdatedAmonia" class="text-white text-sm"></p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </main>
 
             <!-- Footer -->
@@ -414,101 +377,8 @@
         });
 
 
-        var updateChartDioksida = function() {
-            $.ajax({
-                url: "{{ route('api.chartdioksida', ['id' => 2]) }}",
-                type: 'GET',
-                dataType: 'json',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(data) {
-                    // Update chart
-                    chartDioksida.data.labels = data.labels;
-                    chartDioksida.data.datasets[0].data = data.data;
-                    chartDioksida.update();
-
-                    // Update the latest value and last updated time
-                    var latestValue = data.latest.nilai_dioksida;
-                    var lastUpdated = new Date(data.latest.updated_at).toLocaleString();
-                    $('#latestValueDioksida').text(latestValue);
-                    $('#lastUpdatedDioksida').text('Terakhir update ' + lastUpdated);
-
-                    // Calculate the percentage for the progress bar and needle position
-                    var minValue = 60;
-                    var maxValue = 65;
-                    var percentage = ((latestValue - minValue) / (maxValue - minValue)) * 100;
-
-                    // Update the progress bar and needle position
-                    var progressFill = $('#progressFill');
-                    var progressNeedle = $('#progressNeedle');
-                    progressFill.css('width', percentage + '%');
-                    progressNeedle.css('left', percentage + '%');
-                    $('#percentageValue').text(percentage.toFixed(2) + '%');
-
-                    // Update the color of the small circle based on percentage
-                    var colorIndicator = $('#colorIndicator');
-                    if (percentage <= 33) {
-                        colorIndicator.css('background-color', 'red');
-                    } else if (percentage <= 66) {
-                        colorIndicator.css('background-color', 'yellow');
-                    } else {
-                        colorIndicator.css('background-color', 'green');
-                    }
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        }
-
-        var updateChartMetana = function() {
-            $.ajax({
-                url: "{{ route('api.chartmetana', ['id' => 2]) }}",
-                type: 'GET',
-                dataType: 'json',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(data) {
-                    // Update chart
-                    chartMetana.data.labels = data.labels;
-                    chartMetana.data.datasets[0].data = data.data;
-                    chartMetana.update();
-
-                    // Update the latest value and last updated time
-                    var latestValue = data.latest.nilai_metana;
-                    var lastUpdated = new Date(data.latest.updated_at).toLocaleString();
-                    $('#latestValueMetana').text(latestValue);
-                    $('#lastUpdatedMetana').text('Terakhir update ' + lastUpdated);
-
-                    // Calculate percentage for the progress bar and needle position
-                    var minValue = 20; // Ganti dengan nilai minimum kadar metana
-                    var maxValue = 100; // Ganti dengan nilai maksimum kadar metana
-                    var percentage = ((latestValue - minValue) / (maxValue - minValue)) * 100;
-
-                    // Update the progress bar and needle position
-                    var progressFill = $('#progressFillMetana');
-                    var progressNeedle = $('#progressNeedleMetana');
-                    progressFill.css('width', percentage + '%');
-                    progressNeedle.css('left', percentage + '%');
-                    $('#percentageValueMetana').text(percentage.toFixed(2) + '%');
-
-                    // Update the color of the small circle based on percentage
-                    var colorIndicator = $('#colorIndicatorMetana');
-                    if (percentage <= 33) {
-                        colorIndicator.css('background-color', 'red');
-                    } else if (percentage <= 66) {
-                        colorIndicator.css('background-color', 'yellow');
-                    } else {
-                        colorIndicator.css('background-color', 'green');
-                    }
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        }
+       
+        
 
         var updateChartHumidity = function() {
             $.ajax({
@@ -606,66 +476,20 @@
             });
         }
 
-        var updateChartAmonia = function() {
-            $.ajax({
-                url: "{{ route('api.chartamonia', ['id' => 2]) }}",
-                type: 'GET',
-                dataType: 'json',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(data) {
-                    // Update chart
-                    chartAmonia.data.labels = data.labels;
-                    chartAmonia.data.datasets[0].data = data.data;
-                    chartAmonia.update();
+        
 
-                    // Update the latest value and last updated time
-                    var latestValue = data.latest.nilai_amonia;
-                    var lastUpdated = new Date(data.latest.updated_at).toLocaleString();
-                    $('#latestValueAmonia').text(latestValue);
-                    $('#lastUpdatedAmonia').text('Terakhir update ' + lastUpdated);
-
-                    // Calculate percentage for the progress bar and needle position
-                    var minValue = 20; // Ganti dengan nilai minimum kadar metana
-                    var maxValue = 100; // Ganti dengan nilai maksimum kadar metana
-                    var percentage = ((latestValue - minValue) / (maxValue - minValue)) * 100;
-
-                    // Update the progress bar and needle position
-                    var progressFill = $('#progressFillAmonia');
-                    var progressNeedle = $('#progressNeedleAmonia');
-                    progressFill.css('width', percentage + '%');
-                    progressNeedle.css('left', percentage + '%');
-                    $('#percentageValueAmonia').text(percentage.toFixed(2) + '%');
-
-                    // Update the color of the small circle based on percentage
-                    var colorIndicator = $('#colorIndicatorAmonia');
-                    if (percentage <= 33) {
-                        colorIndicator.css('background-color', 'red');
-                    } else if (percentage <= 66) {
-                        colorIndicator.css('background-color', 'yellow');
-                    } else {
-                        colorIndicator.css('background-color', 'green');
-                    }
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            });
-        }
-
-        updateChartDioksida();
-        updateChartMetana();
+       
+      
         updateChartHumidity();
         updateChartTemperature();
-        updateChartAmonia();
+       
 
         setInterval(() => {
-            updateChartDioksida();
-            updateChartMetana();
+           
+            // updateChartMetana();
             updateChartHumidity();
             updateChartTemperature();
-            updateChartAmonia();
+            // updateChartAmonia();
 
         }, 3000);
     </script>
