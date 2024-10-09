@@ -64,7 +64,7 @@
                     </div>
                     <div class="pb-4">
                         <div
-                            class="bg-dgreen h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center">
+                            class=" h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center" style="background-color: #914F1E;">
                             <div class="flex justify-between w-full mb-6 items-center">
                                 <p class="text-white text-sm font-bold">Temperature (CH4)</p>
                                 <div class="flex items-center">
@@ -104,7 +104,7 @@
                     </div>
                     <div class="pb-4">
                         <div
-                            class="bg-dgreen h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center">
+                            class="h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center" style="background-color: #914F1E;">
                             <div class="flex justify-between w-full mb-6 items-center">
                                 <p class="text-white text-sm font-bold">Humidity (CH4)</p>
                                 <div class="flex items-center">
@@ -130,7 +130,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="grid grid-cols-3 gap-4">
+                <!-- <div class="grid grid-cols-3 gap-4">
                     <div class="col-span-2">
                         <div class="bg-white shadow-lg rounded-lg mb-4">
                             <div
@@ -251,7 +251,7 @@
                             <p id="lastUpdatedAmonia" class="text-white text-sm"></p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </main>
 
             <!-- Footer -->
@@ -267,7 +267,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        var ctxDioksida = document.getElementById("chartDioksida").getContext('2d');
+       /* var ctxDioksida = document.getElementById("chartDioksida").getContext('2d');
         var chartDioksida = new Chart(ctxDioksida, {
             type: 'line',
             data: {
@@ -323,7 +323,7 @@
                     }]
                 }
             }
-        });
+        }); */
 
         var ctxHumidity = document.getElementById("chartHumidity").getContext('2d');
         var chartHumidity = new Chart(ctxHumidity, {
