@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alat;
 use App\Models\Amonia;
 use App\Models\Dioksida;
 use App\Models\Humidity;
@@ -11,47 +12,39 @@ use Illuminate\Http\Request;
 
 class ChartsController extends Controller
 {
+
+    private function getLatestData($id_alat)
+    {
+        return [
+            'Humidity' => Humidity::where('id_alat', $id_alat)->latest()->first(),
+            'Temperature' => Temperature::where('id_alat', $id_alat)->latest()->first(),
+        ];
+    }
+
     public function index()
     {
-        function getLatestData($id_alat)
-        {
-            return [
-              
-                'Humidity' => Humidity::where('id_alat', $id_alat)->limit(1)->latest()->get(),
-                'Temperature' => Temperature::where('id_alat', $id_alat)->limit(1)->latest()->get(),
-               
+        // Mengambil semua data alat
+        $alat = Alat::all();
+        $data = []; // Inisialisasi variabel $data sebagai array kosong
+
+        // Loop melalui setiap alat untuk mendapatkan data Humidity dan Temperature terbaru
+        foreach ($alat as $value) {
+            $latestData = $this->getLatestData($value->id_alat); // Panggil sekali untuk menghemat query
+
+            // Menyimpan data Humidity dan Temperature ke dalam array $data
+            $data[] = [
+                'id_alat' => $value->id_alat, // Menyimpan id_alat
+                'nama_alat' => $value->nama_alat, // Nama alat
+                'Humidity' => $latestData['Humidity'], // Data Humidity terbaru
+                'Temperature' => $latestData['Temperature'] // Data Temperature terbaru
             ];
         }
 
-        $data1 = getLatestData(1);
-        $data2 = getLatestData(2);
-        $data3 = getLatestData(3);
-        $data4 = getLatestData(4);
-
-        $data = [
-        
-            'Humidity1' => $data1['Humidity'],
-            'Temperature1' => $data1['Temperature'],
-            // 'Amonia1' => $data1['Amonia'],
-
-         
-            'Humidity2' => $data2['Humidity'],
-            'Temperature2' => $data2['Temperature'],
-           
-
-         
-            'Humidity3' => $data3['Humidity'],
-            'Temperature3' => $data3['Temperature'],
-            
-
-          
-            'Humidity4' => $data4['Humidity'],
-            'Temperature4' => $data4['Temperature'],
-            
-        ];
-
-        return view('dashboard', $data);
+        // Mengembalikan tampilan 'dashboard' dengan data yang sudah disiapkan
+        return view('dashboard', ['alatData' => $data]);
     }
+
+
 
     public function dioksida(Request $request, $id)
     {
@@ -144,7 +137,7 @@ class ChartsController extends Controller
             $labels = $speeds->pluck('created_at')->map(function ($date) {
                 return $date->format('H:i');
             })->toArray();
-            $data = $speeds->pluck('nilai_suhu')->toArray();
+            $data = $speeds->pluck('nilai_temperature')->toArray();
 
             $latestData = Temperature::latest()->first();
 
@@ -153,7 +146,7 @@ class ChartsController extends Controller
                 'data' => $data,
                 'latest' => [
                     'id_temp' => $latestData->id_temp,
-                    'nilai_suhu' => $latestData->nilai_suhu,
+                    'nilai_temperature' => $latestData->nilai_temperature,
                     'created_at' => $latestData->created_at,
                     'updated_at' => $latestData->updated_at,
                 ],

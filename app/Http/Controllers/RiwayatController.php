@@ -23,21 +23,24 @@ class RiwayatController extends Controller
         return view('riwayat/humidity');
     }
 
-    public function riwayatAmonia(Request $request)
-    {
-        return view('riwayat/amonia');
-    }
+    // public function riwayatAmonia(Request $request)
+    // {
+    //     return view('riwayat/amonia');
+    // }
 
-    public function riwayatDioksida()
-    {
-        return view('riwayat/dioksida');
-    }
+    // public function riwayatDioksida()
+    // {
+    //     return view('riwayat/dioksida');
+    // }
 
-    public function riwayatMetana()
-    {
-        return view('riwayat/metana');
-    }
+    // public function riwayatMetana()
+    // {
+    //     return view('riwayat/metana');
+    // }
+public function detailDashboard($id){
+    return view('dashboard.detaildashboard1', ['id' => $id]);
 
+}
 
     public function getAmoniaData(Request $request)
     {
@@ -67,7 +70,7 @@ class RiwayatController extends Controller
         $end_date = $request->input('createTo') ?? now()->format('Y-m-d');
 
         // Query untuk mendapatkan data suhu rata-rata antara dua tanggal
-        $data = Temperature::selectRaw('DATE(created_at) as date, round(AVG(nilai_suhu), 0) as avg_temperature')
+        $data = Temperature::selectRaw('DATE(created_at) as date, round(AVG(nilai_temperature), 0) as avg_temperature')
             ->whereBetween('created_at', [$start_date, $end_date])
             ->groupBy('date')
             ->orderBy('date')
