@@ -71,23 +71,23 @@
                                     <p class="text-white text-sm" id="percentageValueTemperature"></p>
                                 </div>
                             </div>
-                        
+
                             <div class="progress-container">
                                 <div id="progressFillTemperature" class="progress-bar-fill"></div>
                                 <div id="progressNeedleTemperature" class="progress-needle"></div>
                             </div>
-                        
+
                             <div class="flex justify-between w-full mb-6">
                                 <p class="text-white text-sm">Buruk</p>
                                 <p class="text-white text-sm">Baik</p>
                             </div>
-                        
+
                             <p class="text-white text-sm">Temperature (CH4)</p>
                             <p class="text-white text-sm">Saat ini</p>
                             <div id="latestValueTemperature" class="text-white text-5xl font-bold mb-4"></div>
                             <p id="lastUpdatedTemperature" class="text-white text-sm"></p>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="grid grid-cols-3 gap-4">
@@ -511,7 +511,7 @@
 
         var updateChartHumidity = function() {
             $.ajax({
-                url: "{{ route('api.charthumidity', ['id' => 1]) }}",
+                url: "{{ route('api.charthumidity', ['id' =>$id]) }}",
                 type: 'GET',
                 dataType: 'json',
                 headers: {
@@ -559,7 +559,7 @@
 
         var updateChartTemperature = function() {
             $.ajax({
-                url: "{{ route('api.charttemperature', ['id' => 1]) }}",
+                url: "{{ route('api.charttemperature', ['id' => $id]) }}",
                 type: 'GET',
                 dataType: 'json',
                 headers: {
@@ -572,7 +572,8 @@
                     chartTemperature.update();
 
                     // Update the latest value and last updated time
-                    var latestValue = data.latest.nilai_suhu;
+                    var latestValue = data.latest.nilai_temperature;
+                    console.log(latestValue);
                     var lastUpdated = new Date(data.latest.created_at).toLocaleString();
                     $('#latestValueTemperature').text(latestValue);
                     $('#lastUpdatedTemperature').text('Terakhir update ' + lastUpdated);
