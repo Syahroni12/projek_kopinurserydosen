@@ -11,5 +11,5 @@ class Temperature extends Model
 
     protected $table = 'temperature';
 
-    protected $fillable = ['id_alat', 'nilai_suhu', 'created_at'];
+    protected $fillable = ['id_alat', 'nilai_temperature', 'created_at'];
 }

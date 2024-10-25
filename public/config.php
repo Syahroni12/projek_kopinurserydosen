@@ -3,10 +3,10 @@
 date_default_timezone_set('Asia/Jakarta');
 
 $database = (object) [
-    'host' => 'dbserver.local',
-    'user' => 'is4ac_nursery',
-    'password' => 'is4ac123',
-    'db' => 'is4ac_nursery',
+    'host' => 'localhost',
+    'user' => 'root',
+    'password' => '',
+    'db' => 'nursery',
     'port' => 3306,
 ];
 

@@ -24,11 +24,11 @@ body {
 }
 
 #prev-btn:hover {
-    background-color: #FD7E0B;
+    background-color: #4C4B16;
     color: white;
 }
 
 #next-btn:hover {
     background-color: white;
-    color: #FD7E0B;
+    color: #4C4B16;
 }

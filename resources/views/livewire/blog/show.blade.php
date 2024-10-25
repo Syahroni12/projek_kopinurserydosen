@@ -14,17 +14,17 @@
     @endif
 
 <table class="min-w-full bg-white border-collapse border border-gray-200">
-    <thead style="background-color: #914F1E;">
+    <thead style="background-color: #4C4B16;">
         <tr>
-            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #914F1E;">No</th>
-            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #914F1E;">Gambar</th>
-            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #914F1E;">Judul Blog</th>
-            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #914F1E;">Deskripsi</th>
-            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #914F1E;">Kategori</th>
-            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #914F1E;">Aksi</th>
+            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #4C4B16;">No</th>
+            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #4C4B16;">Gambar</th>
+            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #4C4B16;">Judul Blog</th>
+            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #4C4B16;">Deskripsi</th>
+            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #4C4B16;">Kategori</th>
+            <th class="text-body text-white font-semibold px-4 py-2" style="background-color: #4C4B16;">Aksi</th>
         </tr>
     </thead>
-    
+
     <tbody>
         @foreach ($blog as $item)
             <tr class="">
@@ -50,7 +50,7 @@
                                 </svg>
                             </button>
                         </div>
-                                
+
                         <!-- Delete Button -->
                         <div class="group">
                             <button wire:click="deleteBlog({{ $item->id_blog }})"
@@ -61,7 +61,7 @@
                             </button>
                         </div>
                     </div>
-                </td>                
+                </td>
             </tr>
         @endforeach
     </tbody>

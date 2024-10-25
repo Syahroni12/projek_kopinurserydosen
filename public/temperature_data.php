@@ -9,8 +9,8 @@ $date = date('Y-m-d H:i:s');
 if (!$deviceId || !$value)
     die("Invalid parameters");
 
-$stmt = $conn->prepare("INSERT INTO temperature (id_alat, nilai_temperature, created_at) VALUES (?, ?, ?)");
-$stmt->bind_param("ids", $deviceId, $value, $date);
+$stmt = $conn->prepare("INSERT INTO temperature (id_alat, nilai_temperature, created_at, updated_at) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("ids", $deviceId, $value, $date,$date);
 
 if (!$stmt->execute())
     die("Error sql: <br>" . mysqli_error($conn));

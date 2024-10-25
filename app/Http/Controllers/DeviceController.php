@@ -37,19 +37,19 @@ class DeviceController extends Controller
         }
     }
 
-    public function humidity(Request $request)
-    {
-        try {
-            $date = Carbon::now();
-          $data =  Humidity::create([
-                'id_alat' => $request->id_alat,
-                'nilai_humidity' => $request->nilai,
-                'created_at' => $date,
-            ]);
+        public function humidity(Request $request)
+        {
+            try {
+                $date = Carbon::now();
+            $data =  Humidity::create([
+                    'id_alat' => $request->id_alat,
+                    'nilai_humidity' => $request->nilai,
+                    'created_at' => $date,
+                ]);
 
-            return response()->json(['Data Berhasil Ditambahkan', 'data' => $data]);
-        } catch (\Throwable $th) {
-            return response()->json('Data Gagal Ditambahkan');
+                return response()->json(['Data Berhasil Ditambahkan', 'data' => $data]);
+            } catch (\Throwable $th) {
+                return response()->json('Data Gagal Ditambahkan');
+            }
         }
-    }
 }
