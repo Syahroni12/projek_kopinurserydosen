@@ -27,11 +27,11 @@
             <main class="flex-1 overflow-y-auto p-4">
                 <div class="bg-white shadow-lg rounded-lg mb-4">
                     <div class="flex justify-between items-center px-4 py-3 border-b border-gray-200 bg-gray-50">
-                        <h2 class="text-lg font-bold" style="color: #914F1E;">Blog</h2>
+                        <h2 class="text-lg font-bold" style="color: #4C4B16;">Blog</h2>
 
-                        <button class="hover:bg-[#914F1E] text-white font-semibold py-2 px-4 rounded-lg inline-flex items-center"
-                        style="background-color: #914F1E;" onclick="window.location.href='/addblog';">
-                
+                        <button class="hover:bg-[#4C4B16] text-white font-semibold py-2 px-4 rounded-lg inline-flex items-center"
+                        style="background-color: #4C4B16;" onclick="window.location.href='/addblog';">
+
                             <svg class="fill-current w-3 h-4 mr-3" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 18 18">
                                 <path

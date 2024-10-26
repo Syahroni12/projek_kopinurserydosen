@@ -38,7 +38,7 @@
         }
 
         .bg-brown {
-            background-color: #A0522D;
+            background-color: #4C4B16;
             /* Kode HEX warna coklat */
         }
     </style>

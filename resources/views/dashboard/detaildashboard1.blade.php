@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="pb-4">
-                        <div class="h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center" style="background-color: #914F1E;">
+                        <div class="h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center" style="background-color: #4C4B16;">
                             <div class="flex justify-between w-full mb-6 items-center">
                                 <p class="text-white text-sm font-bold">Temperature (CH4)</p>
                                 <div class="flex items-center">
@@ -103,7 +103,7 @@
                         </div>
                     </div>
                     <div class="pb-4">
-                        <div class="h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center" style="background-color: #914F1E;">
+                        <div class="h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center" style="background-color: #4C4B16;">
                             <div class="flex justify-between w-full mb-6 items-center">
                                 <p class="text-white text-sm font-bold">Humidity (CH4)</p>
                                 <div class="flex items-center">

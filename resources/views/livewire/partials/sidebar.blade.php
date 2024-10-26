@@ -1,5 +1,5 @@
 <aside class="text-white w-52 flex-shrink-0 hidden lg:block "
-    style="background-image: url('{{ asset('images/sidebar-bg.png') }}');">
+    style="background-image: url('{{ asset('assets/sidebar-bg.png') }}');">
     <div class="flex items-center justify-between pt-8 pb-4">
         <a class="flex items-center justify-center w-full" href="#">
             <div class="flex-1 flex justify-center items-center">

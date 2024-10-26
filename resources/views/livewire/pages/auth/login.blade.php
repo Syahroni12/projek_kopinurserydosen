@@ -91,7 +91,7 @@ new #[Layout('layouts.guest')] class extends Component {
                 <div class="flex items-center justify-center">
                     <button type="submit"
                         class="w-full px-4 py-2 text-white rounded-md hover:bg-lgreen focus:outline-none focus:bg-[#914F1E]"
-                        style="background-color: #914F1E;">
+                        style="background-color: #4C4B16;">
                         Masuk
                 </div>
             </form>
