@@ -82,22 +82,13 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('riwayat.amonia') }}"
-                                    class="flex items-center block mx-2 py-1 text-white text-body hover:text-green-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
-                                    Amonia
-                                </a>
+
                             </li>
                             <li>
-                                <a href="{{ route('riwayat.metana') }}"
-                                    class="flex items-center block mx-2 py-1 text-white text-body hover:text-green-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
-                                    Metana
-                                </a>
+
                             </li>
                             <li>
-                                <a href="{{ route('riwayat.dioksida') }}"
-                                    class="flex items-center block mx-2 py-1 text-white text-body hover:text-green-600 hover:bg-gray-100 rounded-lg px-3 mb-3 transition duration-200">
-                                    Karbon Dioksida
-                                </a>
+
                             </li>
                         </ul>
                     </li>
