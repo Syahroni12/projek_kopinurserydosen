@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('temperature', function (Blueprint $table) {
-            $table->id('id_temperature');
-            $table->unsignedInteger('id_alat')->length(3);
-            $table->float('nilai_temperature', 5, 2);
+        Schema::create('control__state', function (Blueprint $table) {
+            $table->id();
+            $table->integer('id_alat')->length(3);
+            $table->string('control_type');
+            $table->integer('control_value')->length(1);
             $table->timestamps();
-            $table->foreign('id_alat')->references('id_alat')->on('alats')->onDelete('cascade');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('temperature');
+        Schema::dropIfExists('control__states');
     }
 };

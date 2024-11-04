@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Alat;
 use App\Models\Amonia;
+use App\Models\Control_State;
 use App\Models\Dioksida;
 use App\Models\Humidity;
 use App\Models\Metana;
@@ -23,6 +24,8 @@ class ChartsController extends Controller
 
     public function index()
     {
+        $status = Control_State::first();
+        $status = $status->control_value;
         // Mengambil semua data alat
         $alat = Alat::all();
         $data = []; // Inisialisasi variabel $data sebagai array kosong
@@ -41,7 +44,10 @@ class ChartsController extends Controller
         }
 
         // Mengembalikan tampilan 'dashboard' dengan data yang sudah disiapkan
-        return view('dashboard', ['alatData' => $data]);
+        return view('dashboard', [
+            'alatData' => $data,
+
+            'status' => $status,]);
     }
 
 
