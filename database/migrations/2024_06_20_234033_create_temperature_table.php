@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedInteger('id_alat')->length(3);
             $table->float('nilai_temperature', 5, 2);
             $table->timestamps();
-            $table->foreign('id_alat')->references('id_alat')->on('alats')->onDelete('cascade');
+            $table->foreign('id_alat')->references('id_alat')->on('alat')->onDelete('cascade');
         });
     }
 
