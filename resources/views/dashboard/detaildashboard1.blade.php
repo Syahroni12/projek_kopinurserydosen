@@ -510,8 +510,9 @@
         // }
 
         var updateChartHumidity = function() {
+            var id = "{{ $id }}";
             $.ajax({
-                url: "{{ route('api.charthumidity', ['id' =>$id]) }}",
+                url: "/charthumidity/"+id,
                 type: 'GET',
                 dataType: 'json',
                 headers: {
@@ -558,8 +559,9 @@
         }
 
         var updateChartTemperature = function() {
+             var id = "{{ $id }}";
             $.ajax({
-                url: "{{ route('api.charttemperature', ['id' => $id]) }}",
+                url: "/charttemperature/" + id,
                 type: 'GET',
                 dataType: 'json',
                 headers: {

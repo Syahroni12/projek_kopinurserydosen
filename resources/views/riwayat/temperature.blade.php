@@ -215,8 +215,7 @@
                 var start = $('#daterange').data('daterangepicker').startDate.format('YYYY-MM-DD');
                 var end = $('#daterange').data('daterangepicker').endDate.format('YYYY-MM-DD');
 
-                window.location.href = '{{ route('export.temperature') }}?createFrom=' + start + '&createTo=' +
-                    end;
+                window.location.href = '/export/temperature?createFrom=' + start + '&createTo=' + end;
             });
         });
     </script>
@@ -265,7 +264,7 @@
             // Fungsi untuk mendapatkan data berdasarkan rentang tanggal
             function fetchData(start, end) {
                 $.ajax({
-                    url: '{{ route('data.riwayattemperature') }}',
+                    url: '/dashboard/data/temperature',
                     method: 'POST',
                     data: {
                         createFrom: start.format('YYYY-MM-DD'),
