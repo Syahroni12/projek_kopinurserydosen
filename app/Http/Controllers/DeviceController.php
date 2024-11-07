@@ -79,5 +79,29 @@ class DeviceController extends Controller
 
         // return redirect()->back()->with('success', 'Data berhasil disimpan!');
     }
+    public function control_statee()
+    {
+
+        $status = Control_State::first();
+        if ($status->control_value == 1) {
+
+            $status->control_value = 0;
+            $status->save();
+        } else {
+            // # code...
+            $status->control_value = 1;
+            $status->save();
+        }
+        if ($status->control_value == 1) {
+
+            return response()->json(['Data pompa berhasil di hidupkan', 'status' => $status->control_value]);
+        }else {
+            // return redirect()->back()->with('success', ' Pompa dinonaktifkan!');
+            return response()->json(['Data pompa berhasil di matikan', 'status' => $status->control_value]);
+            # code...
+        }
+
+        // return redirect()->back()->with('success', 'Data berhasil disimpan!');
+    }
 
 }
