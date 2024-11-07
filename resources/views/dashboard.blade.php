@@ -168,6 +168,7 @@
                                                             Temperature:
                                                             {{ $item['Temperature']->nilai_temperature ?? 'Data not available' }}°C
                                                         </p>
+                                                        <p class="text-white w-1/3">Terakhir update: {{ $item['Temperature']->updated_at ?? 'Data not available' }}</p>
                                                     </div>
                                                 </div>
                                             </div>
