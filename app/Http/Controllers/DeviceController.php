@@ -38,6 +38,7 @@ class DeviceController extends Controller
         }
     }
 
+
     public function humidity(Request $request)
     {
         try {

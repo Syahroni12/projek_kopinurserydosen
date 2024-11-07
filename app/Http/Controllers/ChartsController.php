@@ -47,7 +47,8 @@ class ChartsController extends Controller
         return view('dashboard', [
             'alatData' => $data,
 
-            'status' => $status,]);
+            'status' => $status,
+        ]);
     }
 
 
