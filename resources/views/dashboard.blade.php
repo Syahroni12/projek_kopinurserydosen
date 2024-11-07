@@ -46,68 +46,86 @@
 
         /* From Uiverse.io by andrew-demchenk0 */
         .switch {
-            --input-focus: #2d8cf0;
-            --bg-color: #fff;
-            --bg-color-alt: #666;
-            --main-color: #323232;
-            --input-out-of-focus: #ccc;
+            --input-focus: #4e93f6;
+            /* Warna biru yang lebih cerah saat aktif */
+            --bg-color: #333333;
+            /* Warna latar belakang gelap */
+            --bg-color-alt: #ccc;
+            /* Warna latar belakang tidak aktif */
+            --main-color: #fff;
+            /* Warna putih untuk elemen utama */
+            --input-out-of-focus: #ddd;
+            /* Warna latar belakang saat tidak aktif */
             position: relative;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 30px;
-            width: 70px;
-            height: 36px;
-            transform: translateX(calc(50% - 10px));
+            width: 90px;
+            /* Lebar toggle lebih besar */
+            height: 50px;
+            /* Tinggi lebih besar untuk bentuk lebih proporsional */
+            border-radius: 50px;
+            /* Membuat toggle berbentuk bulat */
+            background-color: var(--bg-color-alt);
+            transition: background-color 0.3s, box-shadow 0.3s ease-in-out;
+            /* Transisi halus */
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            /* Bayangan lebih lembut */
         }
 
         .toggle {
             opacity: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
         }
 
         .slider {
-            box-sizing: border-box;
-            border-radius: 100px;
-            border: 2px solid var(--main-color);
-            box-shadow: 4px 4px var(--main-color);
             position: absolute;
-            cursor: pointer;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
+            border-radius: 50px;
             background-color: var(--input-out-of-focus);
-            transition: 0.3s;
+            border: none;
+            transition: 0.4s ease-in-out;
+            /* Transisi lebih halus */
         }
 
         .slider:before {
-            content: "off";
-            box-sizing: border-box;
-            height: 30px;
-            width: 30px;
+            content: "OFF";
             position: absolute;
-            left: 2px;
-            bottom: 1px;
-            border: 2px solid var(--main-color);
-            border-radius: 100px;
+            top: 50%;
+            left: 5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             background-color: var(--bg-color);
             color: var(--main-color);
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 16px;
+            font-weight: 700;
             text-align: center;
-            line-height: 25px;
-            transition: 0.3s;
+            line-height: 40px;
+            transform: translateY(-50%);
+            transition: 0.4s ease-in-out;
+            /* Efek animasi pada label */
         }
 
+        /* Ketika toggle aktif */
         .toggle:checked+.slider {
             background-color: var(--input-focus);
-            transform: translateX(-32px);
+            box-shadow: 0 4px 18px rgba(0, 143, 255, 0.5);
+            /* Bayangan lebih kuat */
         }
 
         .toggle:checked+.slider:before {
-            content: "on";
-            transform: translateX(32px);
+            content: "ON";
+            transform: translateY(-50%) translateX(40px);
+            /* Geser tombol ke kanan */
+            color: #fff;
+            /* Ubah warna teks saat aktif */
         }
     </style>
 
@@ -125,38 +143,21 @@
             <main class="flex-1 overflow-y-auto p-4">
                 <div class="gap-4">
                     <div class="bg-white shadow-lg rounded-lg mb-4">
-
                         <div class="flex justify-between items-center px-4 py-3 border-b border-gray-200 bg-gray-50">
                             <h6 class="m-0 font-semibold text-gray-700">Dashboard</h6>
-                            <div class="flex flex-col items-center">
-                                <p class="mb-1">SAKLAR</p> <!-- Teks di atas switch -->
-                                {{-- /* From Uiverse.io by andrew-demchenk0 */ --}}
-                                <label class="switch">
-                                    <input {{ $status == '1' ? 'checked' : '' }} type="checkbox" class="toggle" onclick="toggleSwitch({{ $status }}, this)" id="toggle">
-                                    <span class="slider"></span>
-                                    <span class="card-side"></span>
-                                </label>
-                            </div>
                         </div>
-
-
-
-                        <div class="px-8 py-8">
-                            <div class="grid grid-cols-2 gap-4">
-                                @php
+                        <div class="flex">
+                            <div class="px-8 py-8 w-4/5">
+                                <!-- div card alat -->
+                                <div class="grid grid-cols-2 gap-4">
+                                    @php
                                     $no = 1;
-                                @endphp
-                                @foreach ($alatData as $item)
-                                    <a href="{{ route('detail.dashboard', ['id' => $item['id_alat']]) }}"
-                                        class="col-span-1">
-
-
-
-                                        <div
-                                            class="bg-brown h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center">
+                                    @endphp
+                                    @foreach ($alatData as $item)
+                                    <a href="{{ route('detail.dashboard', ['id' => $item['id_alat']]) }}" class="col-span-1">
+                                        <div class="bg-brown h-full px-8 rounded-lg shadow-lg flex flex-col justify-center items-center">
                                             <div class="w-full mb-6 items-center mt-4">
-                                                <p class="text-white text-lg font-bold">Lokasi Alat :
-                                                    {{ $item['id_alat'] }}</p>
+                                                <p class="text-white text-lg font-bold">Lokasi Alat : {{ $item['id_alat'] }}</p>
                                                 <p class="text-white text-sm font-bold">Keterangan Lokasi:</p>
                                             </div>
                                             <div class="w-full mb-6">
@@ -165,10 +166,8 @@
                                                         <p class="text-white text-md font-bold w-1/3">Suhu</p>
                                                         <p class="text-white text-md font-bold w-1/6">:</p>
                                                         <p class="text-white text-md font-bold w-1/2">
-                                                            Temperature:
                                                             {{ $item['Temperature']->nilai_temperature ?? 'Data not available' }}°C
                                                         </p>
-                                                        <p class="text-white w-1/3">Terakhir update: {{ $item['Temperature']->updated_at ?? 'Data not available' }}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -178,51 +177,48 @@
                                                         <p class="text-white text-md font-bold w-1/3">Kelembapan</p>
                                                         <p class="text-white text-md font-bold w-1/6">:</p>
                                                         <p class="text-white text-md font-bold w-1/2">
-                                                            Humidity:
                                                             {{ $item['Humidity']->nilai_humidity ?? 'Data not available' }}%
                                                         </p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            {{-- <div class="w-full mb-6">
-                                            <div class="flex justify-between">
-                                                <div class="flex w-full">
-                                                    <p class="text-white text-md font-bold w-1/3">Ammonia</p>
-                                                    <p class="text-white text-md font-bold w-1/6">:</p>
-                                                    <p class="text-white text-md font-bold w-1/2">
-                                                        @if ($Amonia1->isNotEmpty())
-                                                            @foreach ($Amonia1 as $amonia)
-                                                                {{ $amonia->nilai_amonia }}
-                                        @endforeach
-                                        @else
-                                        <p class="text-red-500">No Ammonia data available.</p>
-                                        @endif
-                                        </p>
-                                    </div>
-                            </div>
-                        </div> --}}
-                                            {{-- <div class="w-full mb-6">
-                                            <div class="flex justify-between">
-                                                <div class="flex w-full">
-                                                    <p class="text-white text-md font-bold w-1/3">Karbon Dioksida</p>
-                                                    <p class="text-white text-md font-bold w-1/6">:</p>
-                                                    <p class="text-white text-md font-bold w-1/2">
-                                                        @if ($Dioksida1->isNotEmpty())
-                                                            @foreach ($Dioksida1 as $dioksida)
-                                                                {{ $dioksida->nilai_dioksida }}
-                        @endforeach
-                        @else
-                        <p class="text-red-500">No Dioksida data available.</p>
-                        @endif
-                        </p>
-                    </div>
-                </div>
-        </div> --}}
-
+                                            <div class="w-full mb-6">
+                                                <div class="flex justify-between">
+                                                    <div class="flex w-full">
+                                                        <p class="text-white text-md font-bold w-1/3">Terakhir Update</p>
+                                                        <p class="text-white text-md font-bold w-1/6">:</p>
+                                                        <p class="text-white text-md font-bold w-1/2">
+                                                            {{ $item['Temperature']->updated_at ?? 'Data not available' }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </a>
-                                @endforeach
-                                {{--  --}}
+                                    @endforeach
+                                </div>
+                            </div>
+                            <!-- card kontrol -->
+                            <div class="flex flex-col gap-4 w-1/4 pr-8 pt-8">
+                                <div class="bg-black rounded-lg p-6 shadow-md relative h-56 flex flex-col justify-center items-center">
+                                    <div class="absolute top-4 left-4 flex items-center">
+                                        <img src="{{ asset('assets/img/hum-icon.png')}}" alt="Icon" class="w-12 h-12 rounded-full">
+                                        <p class="text-white font-semibold ml-4">Kontrol Manual</p>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <label class="switch">
+                                            <input {{ $status == '1' ? 'checked' : '' }} type="checkbox" class="toggle" onclick="toggleSwitch({{ $status }}, this)" id="toggle">
+                                            <span class="slider"></span>
+                                            <span class="card-side"></span>
+                                        </label>
+                                    </div>
+                                    <p class="absolute bottom-10 left-4 text-white font-semibold">Penyemprotan Manual</p>
+                                    <p class="absolute bottom-4 left-4 text-white text-sm">Aktifkan ketika kontrol otomatis bermasalah</p>
+                                </div>
+                                <div class="bg-gray-200 rounded-lg p-6 shadow-md">
+                                    <h6 class="font-semibold text-gray-700">Kontrol Otomatis</h6>
+                                    <p>Isi konten dari Card 1</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -243,7 +239,7 @@
     <script>
         function toggleSwitch(status, element) {
 
-const status_awal=status;
+            const status_awal = status;
             Swal.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
@@ -254,8 +250,8 @@ const status_awal=status;
                 confirmButtonText: "Yes, delete it!"
             }).then((result) => {
                 if (result.isConfirmed) {
-                   window.location.href = "/control_state";
-                }else{
+                    window.location.href = "/control_state";
+                } else {
                     element.checked = status == '1';
                 }
             });
@@ -264,12 +260,13 @@ const status_awal=status;
         }
 
 
-        @if (session('success'))
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: '{{ session('success') }}',
-            });
+        @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: '{{ session('
+            success ') }}',
+        });
         @endif
     </script>
     @vite('resources/js/app.js')
