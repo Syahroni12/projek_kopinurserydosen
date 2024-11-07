@@ -6,6 +6,7 @@ use App\Exports\HumidityExport;
 use App\Exports\MetanaExport;
 use App\Exports\TemperatureExport;
 use App\Http\Controllers\ChartsController;
+use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\RiwayatController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('addblog', 'addblog')->name('addblog');
     Route::view('profile', 'profile')->name('profile');
 
+
+    Route::get('/control_state', [DeviceController::class, 'control_state'])->name('control_state');
     Route::controller(RiwayatController::class)->prefix('/dashboard')->group(function () {
         Route::get('riwayat-temperature', 'riwayatTemperature')->name('riwayat.temperature');
         Route::get('riwayat-humidity', 'riwayatHumidity')->name('riwayat.humidity');
@@ -45,7 +48,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/data/metana', 'getMetanaData')->name('data.riwayatmetana');
         Route::post('/data/humidity', 'getHumidityData')->name('data.riwayathumidity');
         Route::post('/data/dioksida', 'getDioksidaData')->name('data.riwayatdioksida');
-
     });
     Route::get('export/ammonia', function (Request $request) {
         $startDate = $request->query('createFrom');
@@ -82,4 +84,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('export.dioksida');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

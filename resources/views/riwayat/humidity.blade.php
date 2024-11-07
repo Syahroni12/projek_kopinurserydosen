@@ -204,8 +204,7 @@
                 var start = $('#daterange').data('daterangepicker').startDate.format('YYYY-MM-DD');
                 var end = $('#daterange').data('daterangepicker').endDate.format('YYYY-MM-DD');
 
-                window.location.href = '{{ route('export.humidity') }}?createFrom=' + start + '&createTo=' +
-                    end;
+                window.location.href = '/export/humidity?createFrom=' + start + '&createTo=' + end;
             });
         });
     </script>
