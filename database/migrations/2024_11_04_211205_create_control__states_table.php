@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('control__state', function (Blueprint $table) {
+        Schema::create('control_state', function (Blueprint $table) {
             $table->id();
             $table->integer('id_alat')->length(3);
             $table->string('control_type');
