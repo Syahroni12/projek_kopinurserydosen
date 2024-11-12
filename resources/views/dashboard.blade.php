@@ -215,9 +215,42 @@
                                     <p class="absolute bottom-10 left-4 text-white font-semibold">Penyemprotan Manual</p>
                                     <p class="absolute bottom-4 left-4 text-white text-sm">Aktifkan ketika kontrol otomatis bermasalah</p>
                                 </div>
-                                <div class="bg-gray-200 rounded-lg p-6 shadow-md">
-                                    <h6 class="font-semibold text-gray-700">Kontrol Otomatis</h6>
-                                    <p>Isi konten dari Card 1</p>
+                                <div class="bg-black rounded-lg p-6 shadow-md relative h-96 flex flex-col justify-center items-center overflow-y-auto">
+                                    <div class="absolute top-4 left-4 flex items-center">
+                                        <img src="{{ asset('assets/img/hum-icon.png') }}" alt="Icon" class="w-12 h-12 rounded-full">
+                                        <p class="text-white font-semibold ml-4">Kontrol Otomatis</p>
+                                    </div>
+
+                                    <div class="text-center mt-8 flex space-x-8">
+                                        <div>
+                                            <p class="text-white text-sm font-medium">Rata-rata Suhu</p>
+                                            <p class="text-white text-lg font-bold">24°C</p>
+                                        </div>
+
+                                        <div>
+                                            <p class="text-white text-sm font-medium">Rata-rata Kelembapan</p>
+                                            <p class="text-white text-lg font-bold">60%</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-col items-start w-full mt-4 space-y-2">
+                                        <div class="flex items-center w-full">
+                                            <p class="text-white text-sm font-semibold">Pompa ON Suhu Diatas</p>
+                                            <p class="text-white text-lg font-bold ml-auto">27°C</p>
+                                        </div>
+                                        <div class="flex items-center w-full">
+                                            <p class="text-white text-sm font-semibold">Pompa OFF Suhu Bawah</p>
+                                            <p class="text-white text-lg font-bold ml-auto">23°C</p>
+                                        </div>
+                                        <div class="flex items-center w-full">
+                                            <p class="text-white text-sm font-semibold">Pompa ON Kelembapan Diatas</p>
+                                            <p class="text-white text-lg font-bold ml-auto">80%</p>
+                                        </div>
+                                        <div class="flex items-center w-full">
+                                            <p class="text-white text-sm font-semibold">Pompa OFF Kelembapan Dibawah</p>
+                                            <p class="text-white text-lg font-bold ml-auto">80%</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
