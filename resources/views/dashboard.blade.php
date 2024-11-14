@@ -215,8 +215,8 @@
                                     <p class="absolute bottom-10 left-4 text-white font-semibold">Penyemprotan Manual</p>
                                     <p class="absolute bottom-4 left-4 text-white text-sm">Aktifkan ketika kontrol otomatis bermasalah</p>
                                 </div>
-                                <div class="bg-black rounded-lg p-6 shadow-md relative h-96 flex flex-col justify-center items-center overflow-y-auto">
-                                    <div class="absolute top-4 left-4 flex items-center">
+                                <div class="bg-black rounded-lg p-6 h-auto shadow-md relative flex flex-col justify-center items-center overflow-y-auto">
+                                    <div class="top-4 left-4 flex items-center">
                                         <img src="{{ asset('assets/img/hum-icon.png') }}" alt="Icon" class="w-12 h-12 rounded-full">
                                         <p class="text-white font-semibold ml-4">Kontrol Otomatis</p>
                                     </div>
@@ -236,19 +236,50 @@
                                     <div class="flex flex-col items-start w-full mt-4 space-y-2">
                                         <div class="flex items-center w-full">
                                             <p class="text-white text-sm font-semibold">Pompa ON Suhu Diatas</p>
-                                            <p class="text-white text-lg font-bold ml-auto">27°C</p>
+                                            <div class="flex items-center ml-auto">
+                                                <input type="number" id="suhuOnAbove" class="text-center w-14 text-sm font-bold bg-transparent text-white border-none mx-1" value="26" />
+                                                <div class="flex flex-col space-y-0.5">
+                                                    <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="increaseValue('suhuOnAbove')">▲</button>
+                                                    <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="decreaseValue('suhuOnAbove')">▼</button>
+                                                </div>
+                                                <span class="text-sm font-bold text-white ml-2">°C</span>
+                                            </div>
                                         </div>
                                         <div class="flex items-center w-full">
                                             <p class="text-white text-sm font-semibold">Pompa OFF Suhu Bawah</p>
-                                            <p class="text-white text-lg font-bold ml-auto">23°C</p>
+                                            <div class="flex items-center ml-auto">
+                                                <input type="number" id="suhuOffBelow" class="text-center w-14 text-sm font-bold bg-transparent text-white border-none mx-1" value="26" />
+                                                <div class="flex flex-col space-y-0.5">
+                                                    <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="increaseValue('suhuOffBelow')">▲</button>
+                                                    <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="decreaseValue('suhuOffBelow')">▼</button>
+                                                </div>
+                                                <span class="text-sm font-bold text-white ml-2">°C</span>
+                                            </div>
                                         </div>
                                         <div class="flex items-center w-full">
-                                            <p class="text-white text-sm font-semibold">Pompa ON Kelembapan Diatas</p>
-                                            <p class="text-white text-lg font-bold ml-auto">80%</p>
+                                            <p class="text-white text-sm font-semibold">Pompa ON Kelembapan Dibawah</p>
+                                            <div class="flex items-center ml-auto">
+                                                <input type="number" id="kelembapanOnBelow" class="text-center w-14 text-sm font-bold bg-transparent text-white border-none mx-1" value="80" />
+                                                <div class="flex flex-col space-y-0.5">
+                                                    <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="increaseValue('kelembapanOnBelow')">▲</button>
+                                                    <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="decreaseValue('kelembapanOnBelow')">▼</button>
+                                                </div>
+                                                <span class="text-sm font-bold text-white ml-2">%</span>
+                                            </div>
                                         </div>
                                         <div class="flex items-center w-full">
-                                            <p class="text-white text-sm font-semibold">Pompa OFF Kelembapan Dibawah</p>
-                                            <p class="text-white text-lg font-bold ml-auto">80%</p>
+                                            <p class="text-white text-sm font-semibold">Pompa OFF Kelembapan Diatas</p>
+                                            <div class="flex items-center ml-auto">
+                                                <input type="number" id="kelembapanOffAbove" class="text-center w-14 text-sm font-bold bg-transparent text-white border-none mx-1" value="80" />
+                                                <div class="flex flex-col space-y-0.5">
+                                                    <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="increaseValue('kelembapanOffAbove')">▲</button>
+                                                    <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="decreaseValue('kelembapanOffAbove')">▼</button>
+                                                </div>
+                                                <span class="text-sm font-bold text-white ml-2">%</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-center w-full mt-8">
+                                            <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md w-3/4" onclick="#">Set</button>
                                         </div>
                                     </div>
                                 </div>
@@ -301,6 +332,18 @@
             success ') }}',
         });
         @endif
+    </script>
+
+    <script>
+        function increaseValue(id) {
+            const input = document.getElementById(id);
+            input.value = parseInt(input.value) + 1;
+        }
+
+        function decreaseValue(id) {
+            const input = document.getElementById(id);
+            input.value = parseInt(input.value) - 1;
+        }
     </script>
     @vite('resources/js/app.js')
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
