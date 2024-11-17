@@ -304,12 +304,52 @@
                                                     <p class="text-white text-lg font-bold">60%</p>
                                                 </div>
                                             </div>
-                                            <div class="flex flex-col items-start w-full mt-4 space-y-2">
-                                                <div class="flex justify-center w-full mt-8">
-                                                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md w-3/4" onclick="#">Set</button>
+                                            <div class="flex flex-col items-start w-full mt-4 space-y-4">
+                                                <!-- Time Range Siang -->
+                                                <div class="flex flex-col items-center w-full">
+                                                    <p class="text-white text-sm font-semibold">Siang</p>
+                                                    <div class="flex items-center justify-between w-full mt-2">
+                                                        <input
+                                                            type="time"
+                                                            id="startTimeDay"
+                                                            class="text-center w-32 text-sm font-bold bg-transparent text-white border border-gray-500 rounded px-2 py-1" />
+                                                        <span class="text-white text-sm font-semibold mx-4">-</span>
+                                                        <input
+                                                            type="time"
+                                                            id="endTimeDay"
+                                                            class="text-center w-32 text-sm font-bold bg-transparent text-white border border-gray-500 rounded px-2 py-1" />
+                                                    </div>
                                                 </div>
+
+                                                <!-- Time Range Malam -->
+                                                <div class="flex flex-col items-center w-full mt-4">
+                                                    <p class="text-white text-sm font-semibold">Malam</p>
+                                                    <div class="flex items-center justify-between w-full mt-2">
+                                                        <input
+                                                            type="time"
+                                                            id="startTimeNight"
+                                                            class="text-center w-32 text-sm font-bold bg-transparent text-white border border-gray-500 rounded px-2 py-1" />
+                                                        <span class="text-white text-sm font-semibold mx-4">-</span>
+                                                        <input
+                                                            type="time"
+                                                            id="endTimeNight"
+                                                            class="text-center w-32 text-sm font-bold bg-transparent text-white border border-gray-500 rounded px-2 py-1" />
+                                                    </div>
+                                                </div>
+
+                                                <!-- Activation Button -->
+                                                <div class="flex justify-center w-full mt-8">
+                                                    <button
+                                                        class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md w-1/2"
+                                                        onclick="activateTimerRanges()">
+                                                        Set Timer
+                                                    </button>
+                                                </div>
+                                                <!-- Feedback for Time Range -->
+                                                <p id="timeRangeFeedback" class="text-white text-sm text-center hidden"></p>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -399,6 +439,67 @@
         // Set tab default aktif
         document.getElementById('tabButton1').click();
     </script>
+    <script>
+        function activateTimerRanges() {
+            const startTimeDay = document.getElementById('startTimeDay').value;
+            const endTimeDay = document.getElementById('endTimeDay').value;
+            const startTimeNight = document.getElementById('startTimeNight').value;
+            const endTimeNight = document.getElementById('endTimeNight').value;
+            const feedback = document.getElementById('timeRangeFeedback');
+
+            // Validasi input waktu
+            if (!startTimeDay || !endTimeDay || !startTimeNight || !endTimeNight) {
+                feedback.textContent = "Silakan masukkan waktu untuk semua sesi.";
+                feedback.classList.remove('hidden');
+                feedback.classList.add('text-red-500');
+                return;
+            }
+
+            // Konversi waktu ke format Date
+            const now = new Date();
+            const startDay = new Date(now.toDateString() + ' ' + startTimeDay);
+            const endDay = new Date(now.toDateString() + ' ' + endTimeDay);
+            const startNight = new Date(now.toDateString() + ' ' + startTimeNight);
+            const endNight = new Date(now.toDateString() + ' ' + endTimeNight);
+
+            // Validasi logika waktu
+            if (startDay >= endDay) {
+                feedback.textContent = "Waktu selesai sesi siang harus lebih besar dari waktu mulai.";
+                feedback.classList.remove('hidden');
+                feedback.classList.add('text-red-500');
+                return;
+            }
+            if (startNight >= endNight) {
+                feedback.textContent = "Waktu selesai sesi malam harus lebih besar dari waktu mulai.";
+                feedback.classList.remove('hidden');
+                feedback.classList.add('text-red-500');
+                return;
+            }
+
+            // Hitung durasi dan tampilkan feedback
+            const durationDay = (endDay - startDay) / 1000 / 60; // Durasi sesi siang dalam menit
+            const durationNight = (endNight - startNight) / 1000 / 60; // Durasi sesi malam dalam menit
+            feedback.textContent = `Timer sesi siang diatur dari ${startTimeDay} hingga ${endTimeDay} (${durationDay} menit).` +
+                ` Timer sesi malam diatur dari ${startTimeNight} hingga ${endTimeNight} (${durationNight} menit).`;
+            feedback.classList.remove('hidden');
+            feedback.classList.add('text-green-500');
+
+            // Simulasi pengaktifan pompa untuk sesi siang
+            const delayDay = durationDay * 60 * 1000;
+            setTimeout(() => {
+                alert('Pompa menyala untuk sesi siang!');
+                // Tambahkan logika untuk kontrol pompa siang di sini
+            }, delayDay);
+
+            // Simulasi pengaktifan pompa untuk sesi malam
+            const delayNight = durationNight * 60 * 1000;
+            setTimeout(() => {
+                alert('Pompa menyala untuk sesi malam!');
+                // Tambahkan logika untuk kontrol pompa malam di sini
+            }, delayNight);
+        }
+    </script>
+
     @vite('resources/js/app.js')
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
