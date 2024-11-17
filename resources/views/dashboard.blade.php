@@ -215,71 +215,100 @@
                                     <p class="absolute bottom-10 left-4 text-white font-semibold">Penyemprotan Manual</p>
                                     <p class="absolute bottom-4 left-4 text-white text-sm">Aktifkan ketika kontrol otomatis bermasalah</p>
                                 </div>
-                                <div class="bg-black rounded-lg p-6 h-auto shadow-md relative flex flex-col justify-center items-center overflow-y-auto">
-                                    <div class="top-4 left-4 flex items-center">
-                                        <img src="{{ asset('assets/img/hum-icon.png') }}" alt="Icon" class="w-12 h-12 rounded-full">
-                                        <p class="text-white font-semibold ml-4">Kontrol Otomatis</p>
+                                <div class="bg-black rounded-lg p-6 h-auto shadow-md relative flex flex-col items-center overflow-y-auto">
+                                    <!-- Tabs (Centered) -->
+                                    <div class="flex justify-center w-full mb-4">
+                                        <button id="tabButton1" class="tab-btn text-white py-2 px-6 mx-2 border-b-2 border-blue-500" onclick="switchTab(event, 'tab1')">Hum/Temp</button>
+                                        <button id="tabButton2" class="tab-btn text-white py-2 px-6 mx-2 border-b-2 border-transparent hover:border-blue-500 focus:border-blue-500" onclick="switchTab(event, 'tab2')">Time</button>
                                     </div>
 
-                                    <div class="text-center mt-8 flex space-x-8">
-                                        <div>
-                                            <p class="text-white text-sm font-medium">Rata-rata Suhu</p>
-                                            <p class="text-white text-lg font-bold">24°C</p>
+                                    <div class="w-full pt-2">
+                                        <div id="tab1" class="tab-content w-full">
+                                            <div class="top-4 left-4 flex items-center justify-center">
+                                                <img src="{{ asset('assets/img/hum-icon.png') }}" alt="Icon" class="w-12 h-12 rounded-full">
+                                                <p class="text-white font-semibold ml-4">Kontrol Otomatis</p>
+                                            </div>
+                                            <div class="text-center mt-8 flex space-x-8">
+                                                <div>
+                                                    <p class="text-white text-sm font-medium">Rata-rata Suhu</p>
+                                                    <p class="text-white text-lg font-bold">24°C</p>
+                                                </div>
+                                                <div>
+                                                    <p class="text-white text-sm font-medium">Rata-rata Kelembapan</p>
+                                                    <p class="text-white text-lg font-bold">60%</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col items-start w-full mt-4 space-y-2">
+                                                <div class="flex items-center w-full">
+                                                    <p class="text-white text-sm font-semibold">Pompa ON Suhu Diatas</p>
+                                                    <div class="flex items-center ml-auto">
+                                                        <input type="number" id="suhuOnAbove" class="text-center w-14 text-sm font-bold bg-transparent text-white border-none mx-1" value="26" />
+                                                        <div class="flex flex-col space-y-0.5">
+                                                            <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="increaseValue('suhuOnAbove')">▲</button>
+                                                            <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="decreaseValue('suhuOnAbove')">▼</button>
+                                                        </div>
+                                                        <span class="text-sm font-bold text-white ml-2">°C</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center w-full">
+                                                    <p class="text-white text-sm font-semibold">Pompa OFF Suhu Bawah</p>
+                                                    <div class="flex items-center ml-auto">
+                                                        <input type="number" id="suhuOffBelow" class="text-center w-14 text-sm font-bold bg-transparent text-white border-none mx-1" value="26" />
+                                                        <div class="flex flex-col space-y-0.5">
+                                                            <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="increaseValue('suhuOffBelow')">▲</button>
+                                                            <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="decreaseValue('suhuOffBelow')">▼</button>
+                                                        </div>
+                                                        <span class="text-sm font-bold text-white ml-2">°C</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center w-full">
+                                                    <p class="text-white text-sm font-semibold">Pompa ON Kelembapan Dibawah</p>
+                                                    <div class="flex items-center ml-auto">
+                                                        <input type="number" id="kelembapanOnBelow" class="text-center w-14 text-sm font-bold bg-transparent text-white border-none mx-1" value="80" />
+                                                        <div class="flex flex-col space-y-0.5">
+                                                            <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="increaseValue('kelembapanOnBelow')">▲</button>
+                                                            <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="decreaseValue('kelembapanOnBelow')">▼</button>
+                                                        </div>
+                                                        <span class="text-sm font-bold text-white ml-2">%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center w-full">
+                                                    <p class="text-white text-sm font-semibold">Pompa OFF Kelembapan Diatas</p>
+                                                    <div class="flex items-center ml-auto">
+                                                        <input type="number" id="kelembapanOffAbove" class="text-center w-14 text-sm font-bold bg-transparent text-white border-none mx-1" value="80" />
+                                                        <div class="flex flex-col space-y-0.5">
+                                                            <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="increaseValue('kelembapanOffAbove')">▲</button>
+                                                            <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="decreaseValue('kelembapanOffAbove')">▼</button>
+                                                        </div>
+                                                        <span class="text-sm font-bold text-white ml-2">%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex justify-center w-full mt-8">
+                                                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md w-3/4" onclick="#">Set</button>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div>
-                                            <p class="text-white text-sm font-medium">Rata-rata Kelembapan</p>
-                                            <p class="text-white text-lg font-bold">60%</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex flex-col items-start w-full mt-4 space-y-2">
-                                        <div class="flex items-center w-full">
-                                            <p class="text-white text-sm font-semibold">Pompa ON Suhu Diatas</p>
-                                            <div class="flex items-center ml-auto">
-                                                <input type="number" id="suhuOnAbove" class="text-center w-14 text-sm font-bold bg-transparent text-white border-none mx-1" value="26" />
-                                                <div class="flex flex-col space-y-0.5">
-                                                    <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="increaseValue('suhuOnAbove')">▲</button>
-                                                    <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="decreaseValue('suhuOnAbove')">▼</button>
-                                                </div>
-                                                <span class="text-sm font-bold text-white ml-2">°C</span>
+                                        <div id="tab2" class="tab-content w-full hidden">
+                                            <div class="top-4 left-4 flex items-center justify-center">
+                                                <img src="{{ asset('assets/img/hum-icon.png') }}" alt="Icon" class="w-12 h-12 rounded-full">
+                                                <p class="text-white font-semibold ml-4">Kontrol Otomatis</p>
                                             </div>
-                                        </div>
-                                        <div class="flex items-center w-full">
-                                            <p class="text-white text-sm font-semibold">Pompa OFF Suhu Bawah</p>
-                                            <div class="flex items-center ml-auto">
-                                                <input type="number" id="suhuOffBelow" class="text-center w-14 text-sm font-bold bg-transparent text-white border-none mx-1" value="26" />
-                                                <div class="flex flex-col space-y-0.5">
-                                                    <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="increaseValue('suhuOffBelow')">▲</button>
-                                                    <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="decreaseValue('suhuOffBelow')">▼</button>
+                                            <div class="text-center mt-8 flex space-x-8">
+                                                <div>
+                                                    <p class="text-white text-sm font-medium">Rata-rata Suhu</p>
+                                                    <p class="text-white text-lg font-bold">24°C</p>
                                                 </div>
-                                                <span class="text-sm font-bold text-white ml-2">°C</span>
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center w-full">
-                                            <p class="text-white text-sm font-semibold">Pompa ON Kelembapan Dibawah</p>
-                                            <div class="flex items-center ml-auto">
-                                                <input type="number" id="kelembapanOnBelow" class="text-center w-14 text-sm font-bold bg-transparent text-white border-none mx-1" value="80" />
-                                                <div class="flex flex-col space-y-0.5">
-                                                    <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="increaseValue('kelembapanOnBelow')">▲</button>
-                                                    <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="decreaseValue('kelembapanOnBelow')">▼</button>
+                                                <div>
+                                                    <p class="text-white text-sm font-medium">Rata-rata Kelembapan</p>
+                                                    <p class="text-white text-lg font-bold">60%</p>
                                                 </div>
-                                                <span class="text-sm font-bold text-white ml-2">%</span>
                                             </div>
-                                        </div>
-                                        <div class="flex items-center w-full">
-                                            <p class="text-white text-sm font-semibold">Pompa OFF Kelembapan Diatas</p>
-                                            <div class="flex items-center ml-auto">
-                                                <input type="number" id="kelembapanOffAbove" class="text-center w-14 text-sm font-bold bg-transparent text-white border-none mx-1" value="80" />
-                                                <div class="flex flex-col space-y-0.5">
-                                                    <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="increaseValue('kelembapanOffAbove')">▲</button>
-                                                    <button class="bg-gray-700 text-white px-1 py-0.5 text-xs" onclick="decreaseValue('kelembapanOffAbove')">▼</button>
+                                            <div class="flex flex-col items-start w-full mt-4 space-y-2">
+                                                <div class="flex justify-center w-full mt-8">
+                                                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md w-3/4" onclick="#">Set</button>
                                                 </div>
-                                                <span class="text-sm font-bold text-white ml-2">%</span>
                                             </div>
-                                        </div>
-                                        <div class="flex justify-center w-full mt-8">
-                                            <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md w-3/4" onclick="#">Set</button>
                                         </div>
                                     </div>
                                 </div>
@@ -344,6 +373,31 @@
             const input = document.getElementById(id);
             input.value = parseInt(input.value) - 1;
         }
+    </script>
+
+    <script>
+        function switchTab(event, tabId) {
+            // Sembunyikan semua tab-content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Hapus kelas aktif dari semua tombol
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('border-blue-500');
+                btn.classList.add('border-transparent');
+            });
+
+            // Tampilkan tab yang di-klik
+            document.getElementById(tabId).classList.remove('hidden');
+
+            // Tambahkan kelas aktif ke tombol tab yang dipilih
+            event.currentTarget.classList.remove('border-transparent');
+            event.currentTarget.classList.add('border-blue-500');
+        }
+
+        // Set tab default aktif
+        document.getElementById('tabButton1').click();
     </script>
     @vite('resources/js/app.js')
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
