@@ -38,6 +38,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     Route::get('/control_state', [DeviceController::class, 'control_state'])->name('control_state');
+    Route::post('/otomatis_suhulembab', [DeviceController::class, 'otomatis_suhulembab'])->name('otomatis_suhulembab');
+    Route::post('/otomatis_waktu', [DeviceController::class, 'otomatis_waktu'])->name('otomatis_waktu');
     Route::controller(RiwayatController::class)->prefix('/dashboard')->group(function () {
         Route::get('riwayat-temperature', 'riwayatTemperature')->name('riwayat.temperature');
         Route::get('riwayat-humidity', 'riwayatHumidity')->name('riwayat.humidity');
