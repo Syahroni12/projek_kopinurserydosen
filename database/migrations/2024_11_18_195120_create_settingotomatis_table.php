@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('settingotomatis', function (Blueprint $table) {
             $table->id();
+            $table->enum('tipe', ['suhu', 'waktu']);
+            $table->time('waktu1_awal')->nullable();
+            $table->time('waktu1_akhir')->nullable();
+            $table->time('waktu2_awal')->nullable();
+            $table->time('waktu2_akhir')->nullable();
+            $table->float('humidity_awal')->nullable();
+            $table->float('humidity_akhir')->nullable();
+            $table->float('temperature_awal')->nullable();
+            $table->float('temperature_akhir')->nullable();
             $table->timestamps();
         });
     }

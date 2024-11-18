@@ -8,7 +8,9 @@ use App\Models\Control_State;
 use App\Models\Dioksida;
 use App\Models\Humidity;
 use App\Models\Metana;
+use App\Models\Settingotomatis;
 use App\Models\Temperature;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ChartsController extends Controller
@@ -44,9 +46,13 @@ class ChartsController extends Controller
         }
 
         // Mengembalikan tampilan 'dashboard' dengan data yang sudah disiapkan
+        $otomatis=Settingotomatis::first();
+        $currentTime = Carbon::now();
+        $sekarang = $currentTime->format('H:i:s');
+
         return view('dashboard', [
             'alatData' => $data,
-
+'otomatis' => $otomatis,
             'status' => $status,
         ]);
     }
