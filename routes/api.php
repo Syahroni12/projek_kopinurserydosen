@@ -10,7 +10,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('gas/{id}', [MobileController::class, 'index']);
-Route::get('/atur_pompamanual', [DeviceController::class, 'control_statee']);
+Route::get('/atur_pompamanual', [MobileController::class, 'control_statee']);
 
 Route::controller(DeviceController::class)->prefix('/device')->group(function () {
     Route::post('/amonia', [DeviceController::class, 'amonia']);
