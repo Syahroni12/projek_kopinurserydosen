@@ -14,7 +14,7 @@ Route::get('/atur_pompamanual', [MobileController::class, 'control_statee']);
 
 Route::controller(DeviceController::class)->prefix('/device')->group(function () {
     Route::post('/amonia', [DeviceController::class, 'amonia']);
-    Route::get('/control_state', [DeviceController::class, 'control_statee']);
+
     Route::post('/dioksida', [DeviceController::class, 'dioksida']);
     Route::post('/metana', [DeviceController::class, 'metana']);
     Route::post('/temperature', [DeviceController::class, 'temperature']);
