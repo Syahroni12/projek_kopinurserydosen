@@ -203,7 +203,7 @@
                                 class="block text-sm font-medium text-gray-900 dark:text-white">Password</label>
                             <input type="password" name="password" id="password"
                                 class="block w-full p-2.5 border rounded-lg bg-gray-50 text-gray-900 sm:text-sm border-gray-300 focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-600 dark:border-gray-500 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                value="Gumukmas123" readonly>
+                                value="Gapoktan123">
                         </div>
                         <button type="submit" data-modal-hide="default-modal"
                             class="w-full bg-dgreen text-white hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Simpan</button>

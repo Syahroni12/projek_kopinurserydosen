@@ -81,30 +81,7 @@ class DeviceController extends Controller
 
         // return redirect()->back()->with('success', 'Data berhasil disimpan!');
     }
-    public function control_statee()
-    {
 
-        $status = Control_State::first();
-        if ($status->control_value == 1) {
-
-            $status->control_value = 0;
-            $status->save();
-        } else {
-            // # code...
-            $status->control_value = 1;
-            $status->save();
-        }
-        if ($status->control_value == 1) {
-
-            return response()->json(['Data pompa berhasil di hidupkan', 'status' => $status->control_value]);
-        } else {
-            // return redirect()->back()->with('success', ' Pompa dinonaktifkan!');
-            return response()->json(['Data pompa berhasil di matikan', 'status' => $status->control_value]);
-            # code...
-        }
-
-        // return redirect()->back()->with('success', 'Data berhasil disimpan!');
-    }
 
     public function otomatis_suhulembab(Request $request)
     {
@@ -130,10 +107,10 @@ class DeviceController extends Controller
             'waktu1_akhir' => null,
             'waktu2_awal' => null,
             'waktu2_akhir' => null,
-            'tipe'=>$tipe
+            'tipe' => $tipe
         ];
 
-      // Sesuaikan dengan logika Anda untuk tipe data
+        // Sesuaikan dengan logika Anda untuk tipe data
 
         // Update jika ada, atau buat baru jika tidak ada
         $setting = Settingotomatis::first() ?? new Settingotomatis();
@@ -172,10 +149,10 @@ class DeviceController extends Controller
             'waktu1_akhir' => $waktu_akhir1,
             'waktu2_awal' => $waktu_awal2,
             'waktu2_akhir' => $waktu_akhir2,
-            'tipe'=>$tipe
+            'tipe' => $tipe
         ];
 
-     // Sesuaikan dengan logika Anda untuk tipe data
+        // Sesuaikan dengan logika Anda untuk tipe data
         $setting = Settingotomatis::first() ?? new Settingotomatis();
 
         // Update data yang ditemukan atau diisi dengan data baru
